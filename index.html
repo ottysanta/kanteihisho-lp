@@ -1090,8 +1090,8 @@ footer {
   .compare-badges-grid { grid-template-columns: 1fr !important; }
 }
 
-/* eyebrowを白背景上でも読めるコントラストに（WCAG対応） */
-.eyebrow { color: #96700E; }
+/* eyebrowを全背景でWCAG AA対応コントラストに（white/soft/blue 各 5.2:1以上） */
+.eyebrow { color: #7A5E0A; }
 .dark .eyebrow { color: var(--gold); }
 
 /* アンカー遷移時に sticky header に隠れないよう scroll-margin-top を付与 */
@@ -1103,8 +1103,9 @@ section[id], [id] { scroll-margin-top: 80px; }
   .header-cta { padding: 10px 16px !important; }
 }
 
-/* カルーセルドットのタップ領域を広げる */
-.voice-dot { width: 10px; height: 10px; margin: 5px; }
+/* カルーセルドットのタップ領域を広げる（疑似要素で44px相当） */
+.voice-dot { width: 10px; height: 10px; margin: 4px; position: relative; }
+.voice-dot::after { content: ''; position: absolute; inset: -14px; }
 </style>
 </head>
 <body>
@@ -1292,12 +1293,12 @@ section[id], [id] { scroll-margin-top: 80px; }
   <section class="section">
     <div class="container">
       <span class="eyebrow">Why Now</span>
-      <h2 class="section-title">AIが進化した時代に、<br>なぜ判断はさらに難しくなったのか。</h2>
-      <p class="section-lead">ChatGPTに「出店すべきか」と入力してみた経営者は多い。Claudeに「この候補者を採用すべきか」を聞いてみた人もいる。答えは返ってくる。論理的で、網羅的で、整理されている。それでも——決断はできなかった。</p>
+      <h2 class="section-title">情報が増えた時代に、<br>なぜ判断はさらに難しくなったのか。</h2>
+      <p class="section-lead">「出店すべきか」を検索し、データを集め、コンサルに相談した。答えは返ってくる。論理的で、網羅的で、整理されている。それでも——決断はできなかった。情報があるのに動けない理由は、「数字では見えない軸」が整っていないからです。</p>
       <div class="mini-grid">
-        <div class="mini-card"><strong>AIにわからないこと①</strong><p>今年があなたにとって「動く年」か「整える年」か。運気のサイクルの中で今どこにいるかは、命式と気学を重ねて初めて見えます。</p></div>
-        <div class="mini-card"><strong>AIにわからないこと②</strong><p>その候補者があなたの組織と本質的に合うかどうか。相性は履歴書にも面接にも出ません。四柱推命で初めて整理できる次元があります。</p></div>
-        <div class="mini-card"><strong>AIにわからないこと③</strong><p>その出店地・契約日・登記日があなたにとって吉方位かどうか。場所と時間の軸は、財務分析とは別の次元で結果に影響します。</p></div>
+        <div class="mini-card"><strong>数字に見えないこと①</strong><p>今年があなたにとって「動く年」か「整える年」か。運気のサイクルの中で今どこにいるかは、命式と気学を重ねて初めて見えます。</p></div>
+        <div class="mini-card"><strong>数字に見えないこと②</strong><p>その候補者があなたの組織と本質的に合うかどうか。相性は履歴書にも面接にも出ません。四柱推命で初めて整理できる次元があります。</p></div>
+        <div class="mini-card"><strong>数字に見えないこと③</strong><p>その出店地・契約日・登記日があなたにとって吉方位かどうか。場所と時間の軸は、財務分析とは別の次元で結果に影響します。</p></div>
       </div>
       <div class="message-box"><p>情報が多い時代だからこそ、「数字では見えない軸」を持っている経営者が強い。それが、いまこのサービスが必要とされている理由です。</p></div>
     </div>
@@ -1358,7 +1359,7 @@ section[id], [id] { scroll-margin-top: 80px; }
         <div class="mini-card"><strong>3軸複合鑑定</strong><p>四柱推命×九星気学×方位学。3つの視点から立体的に判断材料を整えます。</p></div>
         <div class="mini-card"><strong>単発55,000円（税込）から始められる</strong><p>初回鑑定で体感し、顧問パートナーへの移行を自分で判断できる設計。押し売りはありません。</p></div>
         <div class="mini-card"><strong>「最終決断は経営者本人」を明示</strong><p>答えを押し付けません。依存させません。判断材料を整えるだけです。</p></div>
-        <div class="mini-card"><strong>単発55,000円（税込）から始められる</strong><p>いきなり顧問契約ではなく、まず一度体験してから判断できる設計。押し売りはありません。</p></div>
+        <div class="mini-card"><strong>単発→顧問への段階展開設計</strong><p>単発で体験・信頼を確認してから、顧問への移行を自分のペースで判断できる設計。長期契約の強制はありません。</p></div>
         <div class="mini-card"><strong>競合調査で見えた独自性</strong><p>競合12社すべて「話して終わり」。PDF納品・3軸複合鑑定を明示している競合はゼロでした。</p></div>
       </div>
     </div>
