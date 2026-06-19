@@ -156,7 +156,7 @@ li { list-style: none; }
   border-color: var(--navy);
 }
 .btn.line {
-  color: var(--white);
+  color: var(--navy);
   background: var(--line-green);
 }
 
@@ -1002,10 +1002,10 @@ footer {
 }
 .float-close {
   position: absolute;
-  right: -8px;
-  top: -8px;
-  width: 24px;
-  height: 24px;
+  right: -12px;
+  top: -12px;
+  width: 36px;
+  height: 36px;
   border: 0;
   border-radius: 999px;
   color: var(--navy);
@@ -1041,7 +1041,7 @@ footer {
   .section { padding: 64px 0; }
   .header-inner { min-height: 64px; width: calc(100% - 28px); }
   .brand-logo { width: 140px; }
-  .header-cta { min-height: 40px; padding: 9px 12px; font-size: 12px; }
+  .header-cta { min-height: 44px; padding: 9px 12px; font-size: 12px; }
   .hero { padding: 36px 0 56px; }
   .hero-copy { padding: 0; }
   .hero h1 { font-size: 28px; line-height: 1.55; }
@@ -1083,7 +1083,28 @@ footer {
   .footer-inner { align-items: flex-start; flex-direction: column; }
   .footer-logo { width: 190px; }
   .float-cta { right: 16px; bottom: 16px; width: 190px; }
+  /* モバイルでフロートCTAをフル幅・下固定に */
+  .float-cta { left: 16px; width: auto; }
+  .float-bubble { display: none; }
+  /* 比較バッジグリッド: モバイルは1列 */
+  .compare-badges-grid { grid-template-columns: 1fr !important; }
 }
+
+/* eyebrowを白背景上でも読めるコントラストに（WCAG対応） */
+.eyebrow { color: #96700E; }
+.dark .eyebrow { color: var(--gold); }
+
+/* アンカー遷移時に sticky header に隠れないよう scroll-margin-top を付与 */
+section[id], [id] { scroll-margin-top: 80px; }
+
+/* ナビが1024〜1199px幅で詰まらないよう調整 */
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .nav { gap: 14px; font-size: 13px; }
+  .header-cta { padding: 10px 16px !important; }
+}
+
+/* カルーセルドットのタップ領域を広げる */
+.voice-dot { width: 10px; height: 10px; margin: 5px; }
 </style>
 </head>
 <body>
@@ -1110,9 +1131,9 @@ footer {
         <h1>「コンサルに聞いた。答えは出た。<br><em>それでも、動けなかった。</em>」</h1>
         <p class="hero-main">経営者の判断を止めているのは、能力ではない。<br>「数字には映らない軸」が整っていないからだ。</p>
         <p class="hero-note">経営者のための意思決定支援サービス。四柱推命×九星気学×方位学の3軸複合鑑定。セッション後にPDF鑑定レポートを納品。判断の記録が、資産になります。</p>
-        <div class="hero-visual-mobile" aria-hidden="true">
+        <div class="hero-visual-mobile">
           <div class="hero-photo-shell">
-            <img src="public/images/appraiser-photo.jpg" alt="">
+            <img src="public/images/appraiser-photo.jpg" alt="鑑定秘書 代表鑑定士 加藤瑠海" loading="lazy">
             <svg class="compass-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="1.5"/>
               <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="0.8"/>
@@ -1142,8 +1163,8 @@ footer {
         </div>
         <div class="hero-badges">
           <div class="hero-badge"><span class="badge-mark">3</span><strong>四柱推命 × 九星気学 × 方位学</strong></div>
-          <div class="hero-badge"><span class="badge-mark">PDF</span><strong>鑑定後レポート納品</strong></div>
-          <div class="hero-badge"><span class="badge-mark">記録</span><strong>セッション後にPDF納品</strong></div>
+          <div class="hero-badge"><span class="badge-mark">PDF</span><strong>セッション後にレポート納品</strong></div>
+          <div class="hero-badge"><span class="badge-mark">単発</span><strong>55,000円（税込）から</strong></div>
         </div>
       </div>
       <div class="hero-visual">
@@ -1317,7 +1338,7 @@ footer {
 
       <!-- 競合比較バー -->
       <p style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:20px;">調査対象：経営者・法人向け鑑定サービス 12社（2026年実施）</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;text-align:center;">
+      <div class="compare-badges-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;text-align:center;">
         <div style="padding:24px 16px;background:var(--navy);border-radius:8px;">
           <div style="font-family:var(--serif);font-size:42px;font-weight:700;color:var(--gold);line-height:1;">0<span style="font-size:18px;">社</span></div>
           <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">鑑定後にPDF<br>レポートを納品</div>
@@ -1337,8 +1358,8 @@ footer {
         <div class="mini-card"><strong>3軸複合鑑定</strong><p>四柱推命×九星気学×方位学。3つの視点から立体的に判断材料を整えます。</p></div>
         <div class="mini-card"><strong>単発55,000円（税込）から始められる</strong><p>初回鑑定で体感し、顧問パートナーへの移行を自分で判断できる設計。押し売りはありません。</p></div>
         <div class="mini-card"><strong>「最終決断は経営者本人」を明示</strong><p>答えを押し付けません。依存させません。判断材料を整えるだけです。</p></div>
-        <div class="mini-card"><strong>「最終決断は経営者本人」を明示</strong><p>答えを押し付けない。依存させない。判断材料を整えるだけ。</p></div>
-        <div class="mini-card"><strong>競合調査で見えた独自性</strong><p>競合12社すべて「話して終わり」。PDF納品・3軸複合・AI活用を明示している競合はゼロ。</p></div>
+        <div class="mini-card"><strong>単発55,000円（税込）から始められる</strong><p>いきなり顧問契約ではなく、まず一度体験してから判断できる設計。押し売りはありません。</p></div>
+        <div class="mini-card"><strong>競合調査で見えた独自性</strong><p>競合12社すべて「話して終わり」。PDF納品・3軸複合鑑定を明示している競合はゼロでした。</p></div>
       </div>
     </div>
   </section>
@@ -1348,7 +1369,7 @@ footer {
       <span class="eyebrow">Profile</span>
       <h2 class="section-title">鑑定士について</h2>
       <div class="profile-card">
-        <img src="public/images/appraiser-photo.jpg" alt="鑑定秘書 代表鑑定士 加藤瑠海">
+        <img src="public/images/appraiser-photo.jpg" alt="鑑定秘書 代表鑑定士 加藤瑠海" loading="lazy">
         <div>
           <div class="profile-name">加藤 瑠海</div>
           <div class="profile-meta">鑑定秘書™ 代表鑑定士 / 四柱推命・九星氣学鑑定士</div>
