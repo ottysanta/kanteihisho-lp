@@ -163,7 +163,7 @@ li { list-style: none; }
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 86px 0 66px;
+  padding: 40px 0 66px;
   background:
     linear-gradient(115deg, #FFFFFF 0%, #FFFFFF 45%, #EEF5FA 100%);
 }
@@ -818,6 +818,7 @@ td.highlight {
 }
 .voice-track {
   display: flex;
+  align-items: flex-start;
   gap: 24px;
   transition: transform 0.42s cubic-bezier(0.25, 0.8, 0.25, 1);
   will-change: transform;
@@ -1949,4 +1950,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) {
       diff > 0 ? goTo(current + 1) : goTo(current - 1);
-  
+  }
+  }, { passive: true });
+
+});
+</script>
+</body>
+</html>
