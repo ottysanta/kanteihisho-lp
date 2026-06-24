@@ -514,6 +514,8 @@ td.highlight {
 .menu-card.navy-line { border-top: 4px solid var(--navy); }
 .menu-card.blue-line { border-top: 4px solid #8FB8D8; }
 .feature-list { margin-top: 18px; display: grid; gap: 8px; }
+.plan-range { margin-top: 16px; margin-bottom: 2px; font-weight: 700; color: var(--navy); font-size: 13px; }
+.plan-card.featured .plan-range { color: #fff; }
 .feature-list li {
   position: relative;
   padding-left: 22px;
@@ -1062,6 +1064,8 @@ footer {
   .hero-badge { min-height: 0; padding: 12px 10px; }
   .hero-badge strong { font-size: 11.5px; line-height: 1.45; }
   .badge-mark { width: 28px; height: 28px; font-size: 12px; margin-bottom: 8px; }
+  /* 調査対象キャプションをSPでも1行に収める（幅に応じて縮小） */
+  .survey-note { white-space: nowrap; font-size: min(13px, 3.1vw) !important; }
   .section-title { font-size: 27px; }
   .hero-card { position: static; width: auto; margin: -24px 16px 0; }
   .formula { grid-template-columns: 1fr; }
@@ -1268,7 +1272,7 @@ section[id], [id] { scroll-margin-top: 80px; }
           </tbody>
         </table>
       </div>
-      <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:12px;">調査対象：経営者・法人向け鑑定サービス 12社（2026年実施）</p>
+      <p class="survey-note" style="text-align:center;color:var(--muted);font-size:13px;margin-top:12px;">調査対象：経営者・法人向け鑑定サービス 12社（2026年実施）</p>
       <div class="message-box"><p>鑑定秘書™は、コンサルの代替でも、スピリチュアルでもありません。数字では見えない視点を加えながら、論理的に判断材料を整える——その空白を埋めるために作られたサービスです。</p></div>
     </div>
   </section>
@@ -1321,19 +1325,19 @@ section[id], [id] { scroll-margin-top: 80px; }
       <h2 class="section-title">業界12社に、<br>鑑定秘書™と同じものはなかった。</h2>
 
       <!-- 競合比較バー -->
-      <p style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:20px;">調査対象：経営者・法人向け鑑定サービス 12社（2026年実施）</p>
+      <p class="survey-note" style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:20px;">調査対象：経営者・法人向け鑑定サービス 12社（2026年実施）</p>
       <div class="compare-badges-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;text-align:center;">
+        <div style="padding:24px 16px;background:var(--navy);border-radius:8px;">
+          <div style="font-family:var(--serif);font-size:42px;font-weight:700;color:var(--gold);line-height:1;">0<span style="font-size:18px;">社</span></div>
+          <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">鑑定後にPDF<br>レポートを納品</div>
+        </div>
         <div style="padding:24px 16px;background:var(--navy);border-radius:8px;">
           <div style="font-family:var(--serif);font-size:42px;font-weight:700;color:var(--gold);line-height:1;">0<span style="font-size:18px;">社</span></div>
           <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">3軸複合鑑定を<br>明示</div>
         </div>
         <div style="padding:24px 16px;background:var(--navy);border-radius:8px;">
           <div style="font-family:var(--serif);font-size:42px;font-weight:700;color:var(--gold);line-height:1;">0<span style="font-size:18px;">社</span></div>
-          <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">鑑定後に鑑定レポートを<br>納品</div>
-        </div>
-        <div style="padding:24px 16px;background:var(--navy);border-radius:8px;">
-          <div style="font-family:var(--serif);font-size:42px;font-weight:700;color:var(--gold);line-height:1;">0<span style="font-size:18px;">社</span></div>
-          <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">「最終決断は経営者本人」<br>を明示</div>
+          <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">鑑定後に記録を<br>納品</div>
         </div>
       </div>
 
@@ -1357,7 +1361,7 @@ section[id], [id] { scroll-margin-top: 80px; }
         <div>
           <div class="profile-name">加藤 瑠海</div>
           <div class="profile-meta">鑑定秘書™ 代表鑑定士 / 四柱推命・九星氣学鑑定士</div>
-          <p>15歳で理学療法士を志し、国家資格を取得。新卒1年目で新規病院の立ち上げに抜擢され、毎日、患者様と向き合い続けました。</p>
+          <p>15歳で理学療法士を志し、国家資格を取得。新卒1年目で新規病院の立ち上げに抜擢され、毎日、患者様と向き合い続けた。</p>
           <p style="margin-top:12px;">そこである疑問にぶつかった。<strong style="color:var(--navy);">同じ施術を受けても、改善する人と、また戻ってくる人がいる。なぜか。</strong>身体へのアプローチだけでは説明できない差があった。その差は、その人の思考・選択・行動パターンにあった。</p>
           <p style="margin-top:12px;">その疑問が、人生を変えた。内臓ケア専門サロンを開業し、<strong style="color:var(--navy);">15,000人以上の施術・カウンセリング</strong>に携わる中で確信した。人生の結果を左右するのは、「その人の特性」と「日々の選択」だ——と。</p>
           <p style="margin-top:12px;">口コミは広がり、<strong style="color:var(--navy);">サロンは予約半年待ちに。</strong>出版オファーを受け、Amazonベストセラー累計31冠を達成。その後、経営者へのアドバイスに携わる中で気づいた。多くの経営者が共通して抱える課題は、資金や戦略ではなく——「人・判断・時期」だった。</p>
@@ -1693,23 +1697,29 @@ section[id], [id] { scroll-margin-top: 80px; }
         <div class="plan-card">
           <h3>鑑定秘書 スポット</h3>
           <div class="price">55,000円</div>
-          <div class="tax">税込 / 50,000円（税抜）</div>
-          <ul class="feature-list"><li>経営判断セッション（75分）</li><li>鑑定レポート納品</li><li>経営判断鑑定</li><li>事業タイミング鑑定</li><li>事業・人材性格鑑定</li></ul>
+          <div class="tax">／回（税込）・50,000円／回（税抜）</div>
+          <ul class="feature-list"><li>経営判断セッション（75分）</li><li>鑑定レポート</li></ul>
+          <div class="plan-range">【鑑定範囲】 ※3テーマまで</div>
+          <ul class="feature-list"><li>経営判断鑑定</li><li>人格教育鑑定</li><li>事業相性鑑定</li></ul>
           <div class="target">まず一度、体感したい方へ</div>
         </div>
         <div class="plan-card">
           <h3>鑑定秘書 スタンダード</h3>
           <div class="price">660,000円</div>
-          <div class="tax">年額・税込 / 600,000円（税抜）月換算55,000円（税込）</div>
-          <ul class="feature-list"><li>月次定例セッション 60分（月1回）</li><li>月次経営判断レポート</li><li>月次方位鑑定レポート</li><li>経営判断鑑定</li><li>事業タイミング鑑定</li><li>事業・人材性格鑑定</li></ul>
+          <div class="tax">／年（税込）・600,000円／年（税抜）</div>
+          <ul class="feature-list"><li>月次定例セッション（60分/月1回）</li><li>月次経営判断レポート</li></ul>
+          <div class="plan-range">【鑑定範囲】 ※3テーマまで</div>
+          <ul class="feature-list"><li>経営判断鑑定</li><li>人格教育鑑定</li><li>事業相性鑑定</li></ul>
           <div class="target">定期的に伴走してほしい方へ</div>
         </div>
         <div class="plan-card featured">
           <div class="plan-badge">おすすめ</div>
           <h3>鑑定秘書 プレミアム</h3>
           <div class="price">1,320,000円</div>
-          <div class="tax">年額・税込 / 1,200,000円（税抜）月換算110,000円（税込）</div>
-          <ul class="feature-list"><li>月次定例セッション（月1回）</li><li>定例経営判断レポート</li><li>月次方位鑑定レポート</li><li>年間カレンダー＆リマインド</li><li>経営判断鑑定＋事業方位鑑定</li><li>事業タイミング鑑定＋事業日鑑定</li><li>事業・人材性格鑑定＋イベント日鑑定</li></ul>
+          <div class="tax">／年（税込）・1,200,000円／年（税抜）</div>
+          <ul class="feature-list"><li>月次定例セッション（60分/月1回）</li><li>鑑定レポート納品</li><li>行動日カレンダー付き</li><li>緊急相談対応（30分）</li><li>会食やイベントの出張鑑定（コラボ）</li></ul>
+          <div class="plan-range">【鑑定範囲】 ※5テーマまで</div>
+          <ul class="feature-list"><li>経営判断鑑定</li><li>人格教育鑑定</li><li>人材相性・適性鑑定</li><li>事業方位鑑定（出店、移転、出張、会食）</li><li>商談・契約・イベント日鑑定</li></ul>
           <div class="target">本気で拡大フェーズを越えたい方へ</div>
         </div>
       </div>
