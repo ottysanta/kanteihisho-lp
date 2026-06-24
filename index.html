@@ -302,6 +302,8 @@ li { list-style: none; }
   background: rgba(255,255,255,0.92);
   border: 1px solid rgba(221,230,239,0.9);
   box-shadow: var(--shadow);
+  z-index: 3;
+  backdrop-filter: blur(2px);
 }
 .hero-card strong {
   display: block;
@@ -555,6 +557,7 @@ td.highlight {
   box-shadow: var(--shadow);
 }
 .profile-card img {
+  width: 100%;
   border-radius: 8px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -1946,9 +1949,4 @@ document.addEventListener('DOMContentLoaded', function () {
     var diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) {
       diff > 0 ? goTo(current + 1) : goTo(current - 1);
-    }
-  }, { passive: true });
-});
-</script>
-</body>
-</html>
+  
