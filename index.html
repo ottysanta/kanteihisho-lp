@@ -199,11 +199,13 @@ li { list-style: none; }
   line-height: 1.55;
   font-weight: 700;
   margin-bottom: 22px;
+  text-indent: -1em;
 }
 .hero h1 em {
   color: var(--gold);
   font-style: normal;
 }
+.hero h1 .nb { white-space: nowrap; }
 .hero-main {
   color: var(--text);
   font-size: 18px;
@@ -1029,7 +1031,7 @@ footer {
   .header-cta { min-height: 44px; padding: 9px 12px; font-size: 12px; }
   .hero { padding: 36px 0 56px; }
   .hero-copy { padding: 0; }
-  .hero h1 { font-size: 28px; line-height: 1.55; }
+  .hero h1 { font-size: 28px; line-height: 1.55; text-indent: 0; }
   .hero-main { font-size: 16px; }
   .hero-inner > .hero-visual { display: none; }
   .hero-visual-mobile {
@@ -1044,7 +1046,6 @@ footer {
   }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; }
-  .hero-badges,
   .check-grid,
   .what-grid,
   .mini-grid,
@@ -1056,6 +1057,11 @@ footer {
   .fit-grid,
   .faq-list,
   .story-grid { grid-template-columns: 1fr; }
+  /* ヒーローのバッジはSPでも横3列を維持（読みやすく圧縮） */
+  .hero-badges { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .hero-badge { min-height: 0; padding: 12px 10px; }
+  .hero-badge strong { font-size: 11.5px; line-height: 1.45; }
+  .badge-mark { width: 28px; height: 28px; font-size: 12px; margin-bottom: 8px; }
   .section-title { font-size: 27px; }
   .hero-card { position: static; width: auto; margin: -24px 16px 0; }
   .formula { grid-template-columns: 1fr; }
@@ -1114,7 +1120,7 @@ section[id], [id] { scroll-margin-top: 80px; }
     <div class="container hero-inner">
       <div class="hero-copy">
         <div class="hero-kicker">年商1億円の壁を前にした、拡大フェーズの経営者へ</div>
-        <h1>「コンサルに聞いた。<br>答えは出た。<br><em>それでも、動けなかった。</em>」</h1>
+        <h1><span class="nb">「コンサルに聞いた。</span><br><span class="nb">答えは出た。</span><br><span class="nb"><em>それでも、</em></span><span class="nb"><em>動けなかった。</em>」</span></h1>
         <p class="hero-main">経営者の判断を止めているのは、能力ではない。<br>「数字には映らない軸」が整っていないからだ。</p>
         <p class="hero-note">経営者のための意思決定支援サービス。四柱推命×九星気学×方位学の3軸複合鑑定。セッション後に鑑定レポートを納品。判断の記録が、資産になります。</p>
         <div class="hero-visual-mobile">
@@ -1271,7 +1277,7 @@ section[id], [id] { scroll-margin-top: 80px; }
     <div class="container">
       <span class="eyebrow">Why Now</span>
       <h2 class="section-title">情報が増えた時代に、<br>なぜ判断はさらに難しくなったのか。</h2>
-      <p class="section-lead">「出店すべきか」を検索し、データを集め、コンサルに相談した。答えは返ってくる。論理的で、網羅的で、整理されている。それでも——決断はできなかった。情報があるのに動けない理由は、「数字では見えない軸」が整っていないからです。</p>
+      <p class="section-lead">「出店すべきか」を検索し、データを集め、コンサルに相談した。答えは返ってくる。論理的で、網羅的で、整理されている。それでも——決断はできなかった。情報があるのに動けない理由は、「数字では見えない軸」が整っていないから。</p>
       <div class="mini-grid">
         <div class="mini-card"><strong>数字に見えないこと①</strong><p>今年があなたにとって「動く年」か「整える年」か。運気のサイクルの中で今どこにいるかは、命式と気学を重ねて初めて見えます。</p></div>
         <div class="mini-card"><strong>数字に見えないこと②</strong><p>その候補者があなたの組織と本質的に合うかどうか。相性は履歴書にも面接にも出ません。四柱推命で初めて整理できる次元があります。</p></div>
