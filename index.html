@@ -282,15 +282,7 @@ li { list-style: none; }
   z-index: 1;
 }
 .compass-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.07;
-  color: var(--gold);
-  pointer-events: none;
-  z-index: 2;
-  mix-blend-mode: multiply;
+  display: none;
 }
 .hero-card {
   position: absolute;
@@ -1135,7 +1127,7 @@ section[id], [id] { scroll-margin-top: 80px; }
         <div class="hero-kicker">年商1億円の壁を前にした、拡大フェーズの経営者へ</div>
         <h1>「コンサルに聞いた。<br>答えは出た。<br><em>それでも、動けなかった。</em>」</h1>
         <p class="hero-main">経営者の判断を止めているのは、能力ではない。<br>「数字には映らない軸」が整っていないからだ。</p>
-        <p class="hero-note">経営者のための意思決定支援サービス。四柱推命×九星気学×方位学の3軸複合鑑定。セッション後にPDF鑑定レポートを納品。判断の記録が、資産になります。</p>
+        <p class="hero-note">経営者のための意思決定支援サービス。四柱推命×九星気学×方位学の3軸複合鑑定。セッション後に鑑定レポートを納品。判断の記録が、資産になります。</p>
         <div class="hero-visual-mobile">
           <div class="hero-photo-shell">
             <img src="public/images/appraiser-jacket.png" alt="鑑定秘書 代表鑑定士 加藤瑠海" loading="lazy">
@@ -1282,10 +1274,10 @@ section[id], [id] { scroll-margin-top: 80px; }
           <tbody>
             <tr><td>提供するもの</td><td>財務・戦略・市場分析</td><td>霊感・感覚・チャネリング</td><td class="highlight">判断材料の整理・可視化</td></tr>
             <tr><td>手法</td><td>定量分析・フレームワーク</td><td>霊視・インスピレーション</td><td class="highlight">四柱推命×九星気学×<br>方位学 3軸複合鑑定</td></tr>
-            <tr><td>納品物</td><td>資料・レポートあり</td><td>なし（話して終わり）</td><td class="highlight">PDF鑑定レポート納品</td></tr>
+            <tr><td>納品物</td><td>資料・レポートあり</td><td>なし（話して終わり）</td><td class="highlight">鑑定レポート納品</td></tr>
             <tr><td>「なぜ今動けないか」<br>に答えられるか</td><td>△ 難しい</td><td>△ 再現性なし</td><td class="highlight">◎ 整理を得意とする</td></tr>
             <tr><td>論理・再現性・<br>最終決断の位置づけ</td><td>◎ 論理的<br>経営者が決める</td><td>× 再現性なし<br>依存しやすい</td><td class="highlight">○ 統計学的手法<br>経営者が決める（明示）</td></tr>
-            <tr><td>記録</td><td>一部あり</td><td>なし</td><td class="highlight">◎ PDF鑑定レポート納品</td></tr>
+            <tr><td>記録</td><td>一部あり</td><td>なし</td><td class="highlight">◎ 鑑定レポート納品</td></tr>
           </tbody>
         </table>
       </div>
@@ -1359,7 +1351,7 @@ section[id], [id] { scroll-margin-top: 80px; }
       </div>
 
       <div class="mini-grid strength-grid">
-        <div class="mini-card"><strong>PDF鑑定レポートを納品</strong><p>話して終わりません。セッション後に内容を記録・整理し、PDFで納品します。後から読み返せる・共有できる・記録として残ります。</p></div>
+        <div class="mini-card"><strong>鑑定レポートを納品</strong><p>話して終わりません。セッション後に内容を記録・整理し、PDFで納品します。後から読み返せる・共有できる・記録として残ります。</p></div>
         <div class="mini-card"><strong>3軸複合鑑定</strong><p>四柱推命×九星気学×方位学。3つの視点から立体的に判断材料を整えます。</p></div>
         <div class="mini-card"><strong>単発55,000円（税込）から始められる</strong><p>初回鑑定で体感し、顧問パートナーへの移行を自分で判断できる設計。押し売りはありません。</p></div>
         <div class="mini-card"><strong>「最終決断は経営者本人」を明示</strong><p>答えを押し付けません。依存させません。判断材料を整えるだけです。</p></div>
@@ -1411,7 +1403,7 @@ section[id], [id] { scroll-margin-top: 80px; }
         <div class="story-item"><strong>人を活かす</strong><p>採用・幹部登用・共同経営——誰を選ぶかが、組織の未来を決める。相性・特性・役割を読み解き、最善の選択を整理する。</p></div>
         <div class="story-item"><strong>判断を整える</strong><p>「この判断で本当に良いのか」——状況・情報・時期を整理し、選択肢を広げ、必要に応じて絞り込む。確信を持って動ける状態をつくる。</p></div>
         <div class="story-item"><strong>時期を読む</strong><p>攻めるべき時期と守るべき時期がある。事業フェーズと運気フェーズの一致を確認し、最適な時期での決断を支援する。</p></div>
-        <div class="story-item"><strong>記録に残す</strong><p>鑑定はZoomで実施し、内容を記録・整理してPDF鑑定レポートとして納品します。話して終わりません。後から読み返せる記録が、判断の資産になります。</p></div>
+        <div class="story-item"><strong>記録に残す</strong><p>鑑定はZoomで実施し、内容を記録・整理して鑑定レポートとして納品します。話して終わりません。後から読み返せる記録が、判断の資産になります。</p></div>
       </div>
       <div class="message-box" style="background:rgba(255,255,255,0.06);border-color:var(--gold);">
         <p style="color:#D9E5F3;font-weight:700;font-family:var(--serif);font-size:17px;margin-bottom:10px;">良い選択が、経営と人生を豊かにする。</p>
@@ -1701,7 +1693,7 @@ section[id], [id] { scroll-margin-top: 80px; }
         <div class="flow-step-card"><div class="flow-num">1</div><h3>LINEで相談</h3><p>相談・質問だけでも構いません。まず状況をお聞かせください。</p></div>
         <div class="flow-step-card"><div class="flow-num">2</div><h3>事前ヒアリング</h3><p>プランと鑑定テーマを確認し、必要な情報を整理します。</p></div>
         <div class="flow-step-card"><div class="flow-num">3</div><h3>Zoom鑑定</h3><p>初回スポットは15分ヒアリング＋60分鑑定（計75分）、顧問は月1回60分を基本に実施します。</p></div>
-        <div class="flow-step-card"><div class="flow-num">4</div><h3>PDF鑑定レポート納品</h3><p>セッション内容を記録・整理し、後から読み返せる形でPDF納品します。</p></div>
+        <div class="flow-step-card"><div class="flow-num">4</div><h3>鑑定レポート納品</h3><p>セッション内容を記録・整理し、後から読み返せる形でPDF納品します。</p></div>
       </div>
     </div>
   </section>
@@ -1715,7 +1707,7 @@ section[id], [id] { scroll-margin-top: 80px; }
           <h3>鑑定秘書 スポット</h3>
           <div class="price">55,000円</div>
           <div class="tax">税込 / 50,000円（税抜）</div>
-          <ul class="feature-list"><li>経営判断セッション（75分）</li><li>PDF鑑定レポート納品</li><li>経営判断鑑定</li><li>事業タイミング鑑定</li><li>事業・人材性格鑑定</li></ul>
+          <ul class="feature-list"><li>経営判断セッション（75分）</li><li>鑑定レポート納品</li><li>経営判断鑑定</li><li>事業タイミング鑑定</li><li>事業・人材性格鑑定</li></ul>
           <div class="target">まず一度、体感したい方へ</div>
         </div>
         <div class="plan-card">
@@ -1795,7 +1787,7 @@ section[id], [id] { scroll-margin-top: 80px; }
         <li class="faq-item"><details><summary>「鑑定」と「コンサルティング」は何が違うのですか？</summary><div class="faq-answer">コンサルタントは数字・市場・財務を語ります。鑑定は「その人が今年動くべきフェーズか」「その相手と組む年か」「その場所が合っているか」を整理します。どちらが正しいではなく、コンサルでは拾えない視点を補完するものです。最終決断は、常に経営者ご自身が行います。</div></details></li>
         <li class="faq-item"><details><summary>スピリチュアルが苦手ですが、大丈夫ですか？</summary><div class="faq-answer">四柱推命・九星気学・方位学はスピリチュアルではなく、数千年の統計に基づく手法です。論理的な経営者の方に多くご利用いただいています。「なぜか動けない」「数字は合うが踏み出せない」という判断の壁打ちとして活用する、論理的思考を持つ経営者に支持されています。</div></details></li>
         <li class="faq-item"><details><summary>一度試してから継続を判断できますか？</summary><div class="faq-answer">はい。スポットプラン（55,000円・税込）からお試しいただけます。信頼関係が築けた上で、顧問への移行をご検討いただく設計です。</div></details></li>
-        <li class="faq-item"><details><summary>鑑定結果はどのように納品されますか？</summary><div class="faq-answer">Zoom鑑定後、セッション内容を記録・整理し、PDF鑑定レポートとして納品します。後から読み返せる・社内で共有できる形でお届けします。競合他社はすべて「話して終わり」ですが、当サービスは記録として残ります。</div></details></li>
+        <li class="faq-item"><details><summary>鑑定結果はどのように納品されますか？</summary><div class="faq-answer">Zoom鑑定後、セッション内容を記録・整理し、鑑定レポートとして納品します。後から読み返せる・社内で共有できる形でお届けします。競合他社はすべて「話して終わり」ですが、当サービスは記録として残ります。</div></details></li>
         <li class="faq-item"><details><summary>顧問プランはいくらですか？</summary><div class="faq-answer">スタンダードは660,000円/年（税込）、プレミアムは1,320,000円/年（税込）です。まずスポットでお試しいただき、継続的なご支援が必要と判断された場合にご検討ください。</div></details></li>
         <li class="faq-item"><details><summary>どんな業種の経営者に使われていますか？</summary><div class="faq-answer">FC展開・飲食・小売・IT・コンサル・サービス業など、幅広い業種の経営者にご利用いただいています。</div></details></li>
       </ul>
@@ -1806,7 +1798,7 @@ section[id], [id] { scroll-margin-top: 80px; }
     <div class="container">
       <h2 class="cta-title">重要な判断の前に、<br>一度だけ鑑定を受けてみてください。</h2>
       <div class="plan-grid">
-        <div class="plan-card" style="background:rgba(255,255,255,0.06);border-color:rgba(216,168,63,0.35);"><h3 style="color:var(--gold);">鑑定秘書 スポット</h3><div class="price" style="color:#fff;">55,000円</div><div class="tax">税込 / 50,000円（税抜）</div><ul class="feature-list"><li>経営判断セッション（75分）</li><li>PDF鑑定レポート納品</li><li>経営判断・事業タイミング・人材性格鑑定</li></ul><div class="target">まず一度、体感したい方へ</div></div>
+        <div class="plan-card" style="background:rgba(255,255,255,0.06);border-color:rgba(216,168,63,0.35);"><h3 style="color:var(--gold);">鑑定秘書 スポット</h3><div class="price" style="color:#fff;">55,000円</div><div class="tax">税込 / 50,000円（税抜）</div><ul class="feature-list"><li>経営判断セッション（75分）</li><li>鑑定レポート納品</li><li>経営判断・事業タイミング・人材性格鑑定</li></ul><div class="target">まず一度、体感したい方へ</div></div>
         <div class="plan-card" style="background:rgba(255,255,255,0.06);border-color:rgba(216,168,63,0.35);"><h3 style="color:var(--gold);">鑑定秘書 スタンダード</h3><div class="price" style="color:#fff;">660,000円</div><div class="tax">年額・税込 / 月換算55,000円（税込）</div><ul class="feature-list"><li>月次定例セッション 60分（月1回）</li><li>月次経営判断レポート</li><li>月次方位鑑定レポート</li></ul><div class="target">定期的に伴走してほしい方へ</div></div>
         <div class="plan-card featured"><div class="plan-badge">おすすめ</div><h3>鑑定秘書 プレミアム</h3><div class="price">1,320,000円</div><div class="tax">年額・税込 / 月換算110,000円（税込）</div><ul class="feature-list"><li>月次定例セッション（月1回）</li><li>定例経営判断レポート</li><li>月次方位鑑定レポート</li><li>年間カレンダー＆リマインド</li><li>事業方位・事業日・イベント日鑑定</li></ul><div class="target">本気で拡大フェーズを越えたい方へ</div></div>
       </div>
