@@ -221,21 +221,7 @@ li { list-style: none; }
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 28px;
-}
-.hero-badges {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-.hero-badge {
-  min-height: 104px;
-  background: rgba(255,255,255,0.86);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 16px;
-  color: var(--navy);
-  box-shadow: 0 12px 26px rgba(8,38,74,0.06);
+  margin-bottom: 0;
 }
 .badge-mark {
   display: inline-flex;
@@ -1117,10 +1103,6 @@ footer {
   .fit-grid,
   .faq-list,
   .story-grid { grid-template-columns: 1fr; }
-  /* ヒーローのバッジはSPでも横3列を維持（読みやすく圧縮） */
-  .hero-badges { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .hero-badge { min-height: 0; padding: 12px 10px; }
-  .hero-badge strong { font-size: 11.5px; line-height: 1.45; }
   .badge-mark { width: 28px; height: 28px; font-size: 12px; margin-bottom: 8px; }
   /* 調査対象キャプションをSPでも1行に収める（幅に応じて縮小） */
   .survey-note { white-space: nowrap; font-size: min(13px, 3.1vw) !important; }
@@ -1208,11 +1190,6 @@ section[id], [id] { scroll-margin-top: 80px; }
         <div class="hero-actions">
           <a href="https://line.me/ti/p/%40253xhxgj" target="_blank" rel="noopener noreferrer" class="btn gold">LINEで相談してみる</a>
           <a href="#plans" class="btn outline">サービスプランを見る</a>
-        </div>
-        <div class="hero-badges">
-          <div class="hero-badge"><span class="badge-mark">3</span><strong>四柱推命 × 九星気学 × 方位学</strong></div>
-          <div class="hero-badge"><span class="badge-mark">PDF</span><strong>セッション後にレポート納品</strong></div>
-          <div class="hero-badge"><span class="badge-mark">✓</span><strong>経営者が、決める</strong></div>
         </div>
       </div>
       <div class="hero-visual">
@@ -1324,7 +1301,7 @@ section[id], [id] { scroll-margin-top: 80px; }
             <tr><td>納品物</td><td>資料・レポートあり</td><td>なし（話して終わり）</td><td class="highlight">鑑定レポート納品</td></tr>
             <tr><td>「なぜ今動けないか」<br>に答えられるか</td><td>△ 難しい</td><td>△ 再現性なし</td><td class="highlight">◎ 整理を得意とする</td></tr>
             <tr><td>論理・再現性・<br>最終決断の位置づけ</td><td>◎ 論理的<br>経営者が決める</td><td>× 再現性なし<br>依存しやすい</td><td class="highlight">○ 統計学的手法<br>経営者が決める（明示）</td></tr>
-            <tr><td>記録</td><td>一部あり</td><td>なし</td><td class="highlight">◎ 鑑定レポート納品</td></tr>
+            <tr><td>記録</td><td>一部あり</td><td>なし</td><td class="highlight">◎ 鑑定レポート</td></tr>
           </tbody>
         </table>
       </div>
@@ -1363,7 +1340,7 @@ section[id], [id] { scroll-margin-top: 80px; }
           <span class="tag">02 九星気学</span>
           <h3>時流を読む</h3>
           <p>9年・9ヶ月の運気サイクルから、今が「動く年」か「整える年」かを見極める。</p>
-          <ul class="feature-list"><li>事業フェーズと運気フェーズの確認</li><li>動くべき根拠を整える</li><li>時期の見落としを防ぐ</li></ul>
+          <ul class="feature-list"><li>事業・運気フェーズの読み解き</li><li>動くべき根拠を整える</li><li>時期の見落としを防ぐ</li></ul>
         </div>
         <div class="menu-card gold-line">
           <span class="tag">03 方位学</span>
@@ -1385,15 +1362,15 @@ section[id], [id] { scroll-margin-top: 80px; }
       <div class="compare-badges-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;text-align:center;">
         <div style="padding:24px 16px;background:var(--navy);border-radius:8px;">
           <div style="font-family:var(--serif);font-size:42px;font-weight:700;color:var(--gold);line-height:1;">0<span style="font-size:18px;">社</span></div>
-          <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">鑑定後にPDF<br>レポートを納品</div>
-        </div>
-        <div style="padding:24px 16px;background:var(--navy);border-radius:8px;">
-          <div style="font-family:var(--serif);font-size:42px;font-weight:700;color:var(--gold);line-height:1;">0<span style="font-size:18px;">社</span></div>
           <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">3軸複合鑑定を<br>明示</div>
         </div>
         <div style="padding:24px 16px;background:var(--navy);border-radius:8px;">
           <div style="font-family:var(--serif);font-size:42px;font-weight:700;color:var(--gold);line-height:1;">0<span style="font-size:18px;">社</span></div>
-          <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">鑑定後に記録を<br>納品</div>
+          <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">セッション記録を<br>保管</div>
+        </div>
+        <div style="padding:24px 16px;background:var(--navy);border-radius:8px;">
+          <div style="font-family:var(--serif);font-size:42px;font-weight:700;color:var(--gold);line-height:1;">0<span style="font-size:18px;">社</span></div>
+          <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:8px;line-height:1.5;">鑑定後にPDF<br>レポートを納品</div>
         </div>
       </div>
 
@@ -1483,7 +1460,7 @@ section[id], [id] { scroll-margin-top: 80px; }
           <div class="case-num">CASE 03</div><h3>新規事業を始めるべきか</h3>
           <div class="case-q">「現事業との相性と、投資の時期が読めなかった」</div>
           <p>IT事業を経営しながら新たなサービス展開を検討していた経営者。市場調査は完了し、初期投資の目途も立っていた。しかし「今年やるべきか、来年まで待つべきか」の判断が出なかった。</p>
-          <p>鑑定では「今は土台を固める時期。動くなら半年後が適切」と整理された。しかし目の前に「良い話」が舞い込み、焦りのまま動いてしまった。結果、順調だった既存事業の主要顧客が離れ、新しい事業の話も白紙に戻った。「鑑定では分かっていたのに」——その悔しさが、運氣を本気で信じるきっかけになった。その後、改めて鑑定で流れを整理し直し、半年後の適切なタイミングで再始動。今度は既存事業も安定させながら、新規事業を軌道に乗せることができた。</p>
+          <p>鑑定では「今は土台を固める時期。動くなら半年後が適切」と整理された。しかし目の前に「良い話」が舞い込み、焦りのまま動いてしまった。結果、順調だった既存事業の主要顧客が離れ、新しい事業の話も白紙に戻った。「鑑定では分かっていたのに」——その悔しさが、運気を本気で信じるきっかけになった。その後、改めて鑑定で流れを整理し直し、半年後の適切なタイミングで再始動。今度は既存事業も安定させながら、新規事業を軌道に乗せることができた。</p>
         </div>
         <div class="case-card">
           <div class="case-num">CASE 04</div><h3>今は攻めるべきか、守るべきか</h3>
