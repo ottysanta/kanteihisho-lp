@@ -918,6 +918,43 @@ td.highlight {
   .swipe-hint { display: flex; }
 }
 
+/* ── BACKGROUNDセクション見出し ─── */
+.bg-head {
+  text-align: center;
+  margin: 56px 0 28px;
+}
+.bg-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.bg-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.7;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 22px;
+}
+.bg-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 1.5px;
+  background: var(--gold);
+}
+@media (max-width: 767px) {
+  .bg-title { font-size: 21px; }
+}
+
 .ps-section {
   padding: 80px 0;
   background: var(--white);
@@ -1390,9 +1427,11 @@ section[id], [id] { scroll-margin-top: 80px; }
       </div>
 
       <!-- バックグラウンドストーリー -->
-      <div style="max-width:800px;margin:40px auto 0;padding:32px;background:var(--white);border-radius:8px;border:1px solid var(--line);box-shadow:0 10px 30px rgba(8,38,74,0.05);">
-        <span class="eyebrow">BACKGROUND</span>
-        <h2 class="section-title">なぜ鑑定秘書™が必要だと確信したか</h2>
+      <div class="bg-head">
+        <p class="bg-label">BACKGROUND</p>
+        <h2 class="bg-title">なぜ鑑定秘書™が必要だと確信したか</h2>
+      </div>
+      <div style="max-width:800px;margin:0 auto;padding:32px;background:var(--white);border-radius:8px;border:1px solid var(--line);box-shadow:0 10px 30px rgba(8,38,74,0.05);">
         <p style="color:var(--text);">私自身も、迷っていた時期がある。</p>
         <p style="margin-top:12px;color:var(--text);">「一つのことに集中できる人こそ成功する」——そう思い込み、複数のことに興味が向く自分をずっと否定していた。</p>
         <p style="margin-top:12px;color:var(--text);">そんなとき、鑑定の恩師に言われた言葉がある。</p>
