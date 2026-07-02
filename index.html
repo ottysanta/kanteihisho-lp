@@ -1146,7 +1146,8 @@ footer {
   .section-title { font-size: 27px; }
   .hero-card { position: static; width: auto; margin: -24px 16px 0; }
   .formula { grid-template-columns: 1fr; }
-  .formula-op { text-align: center; line-height: 1; }
+  .formula-op { text-align: center; font-size: 0; line-height: 0; }
+  .formula-op::after { content: '↓'; font-size: 26px; font-weight: 700; color: var(--gold); line-height: 1; display: block; }
   .profile-card { padding: 18px; }
   .profile-card img { width: 100%; }
   .plan-card.featured { transform: none; }
