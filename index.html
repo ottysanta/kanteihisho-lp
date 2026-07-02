@@ -1146,8 +1146,9 @@ footer {
   .section-title { font-size: 27px; }
   .hero-card { position: static; width: auto; margin: -24px 16px 0; }
   .formula { grid-template-columns: 1fr; }
-  .formula-op { text-align: center; font-size: 0; line-height: 0; }
-  .formula-op::after { content: '↓'; font-size: 26px; font-weight: 700; color: var(--gold); line-height: 1; display: block; }
+  .formula-op { text-align: center; line-height: 1; }
+  .formula-op.formula-eq { font-size: 0; line-height: 0; }
+  .formula-op.formula-eq::after { content: '∨'; font-size: 32px; font-weight: 700; color: var(--gold); line-height: 1; display: block; }
   .profile-card { padding: 18px; }
   .profile-card img { width: 100%; }
   .plan-card.featured { transform: none; }
@@ -1317,7 +1318,7 @@ section[id], [id] { scroll-margin-top: 80px; }
         <div class="formula-card"><strong>東洋占術の知恵</strong><span>四柱推命・九星気学・方位学</span></div>
         <div class="formula-op">+</div>
         <div class="formula-card"><strong>記録・整理</strong><span>レポート化・PDF納品</span></div>
-        <div class="formula-op">=</div>
+        <div class="formula-op formula-eq">=</div>
         <div class="formula-card"><strong>判断材料</strong><span>納得して動くための整理</span></div>
       </div>
     </div>
