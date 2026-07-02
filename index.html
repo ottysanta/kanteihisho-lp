@@ -786,109 +786,86 @@ td.highlight {
 .voice-section {
   padding: 92px 0;
   background: var(--bg);
-  overflow: hidden;
 }
-.voice-track-wrap {
-  position: relative;
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
   margin-top: 48px;
 }
-.voice-overflow {
-  overflow: hidden;
-}
-.voice-track {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  transition: transform 0.42s cubic-bezier(0.25, 0.8, 0.25, 1);
-  will-change: transform;
-}
 .voice-card {
-  flex: 0 0 calc((100% - 48px) / 3);
   background: var(--white);
   border-radius: 12px;
   border: 1px solid var(--line);
-  padding: 32px 28px 28px;
   box-shadow: 0 4px 20px rgba(8,38,74,0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  overflow: hidden;
 }
+.voice-card-head {
+  padding: 22px 22px 18px;
+  cursor: pointer;
+  user-select: none;
+}
+.voice-card-head:hover { background: var(--bg); }
 .voice-stars {
   color: var(--gold);
-  font-size: 18px;
+  font-size: 14px;
   letter-spacing: 2px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 .voice-headline {
   font-family: var(--serif);
   color: var(--navy);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.65;
   margin-bottom: 14px;
 }
-.voice-body {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.9;
-  flex: 1;
+.voice-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 .voice-meta {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
   font-size: 13px;
   color: var(--muted);
   font-weight: 500;
 }
-.voice-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 36px;
-}
-.voice-btn {
-  width: 44px;
-  height: 44px;
+.voice-expand-icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: 1.5px solid var(--gold);
-  background: var(--white);
   color: var(--gold);
-  font-size: 18px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, color 0.2s;
-  flex-shrink: 0;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.25s ease;
 }
-.voice-btn:hover { background: var(--gold); color: var(--white); }
-.voice-btn:disabled { opacity: 0.3; cursor: default; }
-.voice-dots {
-  display: flex;
-  gap: 8px;
-  align-items: center;
+.voice-card.open .voice-expand-icon { transform: rotate(45deg); }
+.voice-body-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
 }
-.voice-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--line);
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-.voice-dot.active {
-  background: var(--gold);
-  transform: scale(1.3);
+.voice-card.open .voice-body-wrap { max-height: 800px; }
+.voice-body {
+  padding: 16px 22px 22px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+  border-top: 1px solid var(--line);
 }
 @media (max-width: 1023px) {
-  .voice-card { flex: 0 0 calc((100% - 24px) / 2); }
+  .voice-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 767px) {
   .voice-section { padding: 64px 0; }
-  .voice-card { flex: 0 0 100%; }
-  .voice-track-wrap { margin-top: 32px; }
+  .voice-grid { grid-template-columns: 1fr; margin-top: 32px; }
 }
 
 .ps-section {
@@ -1092,9 +1069,7 @@ section[id], [id] { scroll-margin-top: 80px; }
   .header-cta { padding: 10px 16px !important; }
 }
 
-/* カルーセルドットのタップ領域を広げる（疑似要素で44px相当） */
-.voice-dot { width: 10px; height: 10px; margin: 4px; position: relative; }
-.voice-dot::after { content: ''; position: absolute; inset: -14px; }
+
 </style>
 </head>
 <body>
@@ -1437,218 +1412,65 @@ section[id], [id] { scroll-margin-top: 80px; }
       <h2 class="section-title">ご利用いただいた方の声</h2>
       <p class="section-lead">経営者・事業主の方々より、実際にいただいた声をご紹介します。</p>
 
-      <div class="voice-track-wrap">
-        <div class="voice-overflow">
-          <div class="voice-track" id="voiceTrack">
+      <div class="voice-grid">
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">「今月、何を意識して動けばいいか」それだけで、仕事も私生活も別物になりました。</div>
-              <div class="voice-body">IT事業を経営しており、最上位プランで毎月サポートを受けています。まだ数字に劇的な変化があるわけではありませんが、それより大きなことが変わりました。毎月、行動指針・注意すべきこと・商談のポイントを整理していただき、それを意識して動くだけで商談の流れが読めるようになり、プライベートのスケジュールも驚くほどスムーズに進んでいます。「なんとなくうまくいった」ではなく、「なぜうまくいったか」がわかるようになる。その積み重ねが、判断の精度を着実に上げていると実感しています。ITの世界は変化が速い。だからこそ、毎月「今の自分の流れ」を確認できることの価値を、受けるたびに感じています。経営者の方には、ぜひ一度受けてみてほしいと思います。</div>
-              <div class="voice-meta">IT事業 経営者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">「今月、何を意識して動けばいいか」それだけで、仕事も私生活も別物になりました。</div><div class="voice-card-footer"><div class="voice-meta">IT事業 経営者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">IT事業を経営しており、最上位プランで毎月サポートを受けています。まだ数字に劇的な変化があるわけではありませんが、それより大きなことが変わりました。毎月、行動指針・注意すべきこと・商談のポイントを整理していただき、それを意識して動くだけで商談の流れが読めるようになり、プライベートのスケジュールも驚くほどスムーズに進んでいます。「なんとなくうまくいった」ではなく、「なぜうまくいったか」がわかるようになる。その積み重ねが、判断の精度を着実に上げていると実感しています。ITの世界は変化が速い。だからこそ、毎月「今の自分の流れ」を確認できることの価値を、受けるたびに感じています。経営者の方には、ぜひ一度受けてみてほしいと思います。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">グループ3店舗の整体院が、1年で18店舗まで拡大しました。</div>
-              <div class="voice-body">率直に受けて本当によかったです。自己理解は前提大切だと思っています。プラスで周りの役員やFCオーナーさん、家族とどのように関わったらより良く周りの方々も成長しつつうまくいくか知れたことは、自身の立ち振る舞いの上でも勉強になりました。事業や生活のコミュニケーションでも活かせています。また、月毎にどういうことを意識して行動すれば良いか具体的に教えていただけるので、意識しつつ常にトライアンドエラーを繰り返せています。グループ3店舗だった整体院が1年で18店舗まで一気に拡大し、ご紹介数も嬉しい悲鳴をあげる状態になれているのは、運気を意識したからだと勝手に思っています。今では本を見るのと同じ感覚でレポートを見るようにしています。</div>
-              <div class="voice-meta">整体院グループ FCオーナー</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">グループ3店舗の整体院が、1年で18店舗まで拡大しました。</div><div class="voice-card-footer"><div class="voice-meta">整体院グループ FCオーナー</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">率直に受けて本当によかったです。自己理解は前提大切だと思っています。プラスで周りの役員やFCオーナーさん、家族とどのように関わったらより良く周りの方々も成長しつつうまくいくか知れたことは、自身の立ち振る舞いの上でも勉強になりました。事業や生活のコミュニケーションでも活かせています。また、月毎にどういうことを意識して行動すれば良いか具体的に教えていただけるので、意識しつつ常にトライアンドエラーを繰り返せています。グループ3店舗だった整体院が1年で18店舗まで一気に拡大し、ご紹介数も嬉しい悲鳴をあげる状態になれているのは、運気を意識したからだと勝手に思っています。今では本を見るのと同じ感覚でレポートを見るようにしています。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">占いに懐疑的だった私が、会社員時代の月収を超えました。</div>
-              <div class="voice-body">四柱推命というのは根拠のない怪しいものじゃないこと、ビジネスで成功している人は存分に活用しているものなんだと知りました。鑑定を受けてから、集客せずにお仕事が舞い込むようになり、会社員時代の月収を超えられるようになりました。</div>
-              <div class="voice-meta">独立起業家</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">占いに懐疑的だった私が、会社員時代の月収を超えました。</div><div class="voice-card-footer"><div class="voice-meta">独立起業家</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">四柱推命というのは根拠のない怪しいものじゃないこと、ビジネスで成功している人は存分に活用しているものなんだと知りました。鑑定を受けてから、集客せずにお仕事が舞い込むようになり、会社員時代の月収を超えられるようになりました。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">まさにコンサル以上のコンサル。本当に助かっています。</div>
-              <div class="voice-body">毎月感じていることですが、本当に私のアカウントを丁寧に見てくださり、持っている特性や星の特徴をもとに「こうすればもっと届くよね」と具体的にアドバイスをいただけるのが、とても心強いです。まさにコンサル以上のコンサルをしていただいているようで、本当に助かっています。</div>
-              <div class="voice-meta">事業主</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">まさにコンサル以上のコンサル。本当に助かっています。</div><div class="voice-card-footer"><div class="voice-meta">事業主</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">毎月感じていることですが、本当に私のアカウントを丁寧に見てくださり、持っている特性や星の特徴をもとに「こうすればもっと届くよね」と具体的にアドバイスをいただけるのが、とても心強いです。まさにコンサル以上のコンサルをしていただいているようで、本当に助かっています。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">瑠海先生は間違いなく「鑑定界の名医」に値します。</div>
-              <div class="voice-body">あらかじめ鑑定してくださっていた内容だけではなく、臨機応変に今起きていること・悩んでいることをヒアリングしながらチューニングしてアドバイスをいただけたところが満足度MAXに繋がっています。占いや鑑定は人生におけるこころの健康診断のようなもの。そういった意味では、瑠海先生は間違いなく鑑定界の名医に値すると思います！</div>
-              <div class="voice-meta">顧問クライアント</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">瑠海先生は間違いなく「鑑定界の名医」に値します。</div><div class="voice-card-footer"><div class="voice-meta">顧問クライアント</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">あらかじめ鑑定してくださっていた内容だけではなく、臨機応変に今起きていること・悩んでいることをヒアリングしながらチューニングしてアドバイスをいただけたところが満足度MAXに繋がっています。占いや鑑定は人生におけるこころの健康診断のようなもの。そういった意味では、瑠海先生は間違いなく鑑定界の名医に値すると思います！</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">「当たってる・当たってない」ではなく、かなりしっかりビジョンが見えました。</div>
-              <div class="voice-body">今まで受けたような簡易的な占いでは、当たってる！当たってない！で終わってしまっていましたが、るみさんの場合は鑑定結果を元に、どう活かしていくか？という具体的な話として落とし込んでくださるので、かなりしっかりビジョンが見えました！るみさんに背中を押してもらうと、出来る気がしてきてパワーみなぎりました！</div>
-              <div class="voice-meta">フリーランス</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">「当たってる・当たってない」ではなく、かなりしっかりビジョンが見えました。</div><div class="voice-card-footer"><div class="voice-meta">フリーランス</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">今まで受けたような簡易的な占いでは、当たってる！当たってない！で終わってしまっていましたが、るみさんの場合は鑑定結果を元に、どう活かしていくか？という具体的な話として落とし込んでくださるので、かなりしっかりビジョンが見えました！るみさんに背中を押してもらうと、出来る気がしてきてパワーみなぎりました！</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">鑑定結果を仕事に結びつけて伝えてくれる。武器として使えます。</div>
-              <div class="voice-body">鑑定結果をただ伝えるのではなく、仕事に結びつけて伝えてくれるので、武器として活用していくイメージがつきました！それも、予め私のことを細かくリサーチして事業のことを把握してくれていたからできることだと思いました。ただの鑑定ではなくコンサル要素もあり、受けて本当によかったです！ビジネスしている人には特におすすめしたいです。</div>
-              <div class="voice-meta">起業家</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">鑑定結果を仕事に結びつけて伝えてくれる。武器として使えます。</div><div class="voice-card-footer"><div class="voice-meta">起業家</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">鑑定結果をただ伝えるのではなく、仕事に結びつけて伝えてくれるので、武器として活用していくイメージがつきました！それも、予め私のことを細かくリサーチして事業のことを把握してくれていたからできることだと思いました。ただの鑑定ではなくコンサル要素もあり、受けて本当によかったです！ビジネスしている人には特におすすめしたいです。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">コンサル＋相性鑑定で、めちゃくちゃお得だと思いました。</div>
-              <div class="voice-body">鑑定を受けてたのに普通のコンサルより、コンサルですごくお得感があります。コンサル＋相性をみてくれるから、めちゃくちゃお得だなと思いました！人の持ってる星に合わせて助言してくださるので、受け入れやすいです。</div>
-              <div class="voice-meta">事業主</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">コンサル＋相性鑑定で、めちゃくちゃお得だと思いました。</div><div class="voice-card-footer"><div class="voice-meta">事業主</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">鑑定を受けてたのに普通のコンサルより、コンサルですごくお得感があります。コンサル＋相性をみてくれるから、めちゃくちゃお得だなと思いました！人の持ってる星に合わせて助言してくださるので、受け入れやすいです。</div></div></div>
 
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">るみさんになら本音で話して大丈夫だと思える安心感があります。</div><div class="voice-card-footer"><div class="voice-meta">経営者・フリーランス</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">今手放した方がいいこと、注力した方がいいことを中心に鑑定していただきました。アドバイスもとても的確で、今月にやった方がいいことは3つに絞って伝えてくださり、行動に移しやすいと思いました。人柄もとても柔らかく、知的で、信頼できるので、るみさんになら本音で話して大丈夫だと思える安心感があります。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">るみさんになら本音で話して大丈夫だと思える安心感があります。</div>
-              <div class="voice-body">今手放した方がいいこと、注力した方がいいことを中心に鑑定していただきました。アドバイスもとても的確で、今月にやった方がいいことは3つに絞って伝えてくださり、行動に移しやすいと思いました。人柄もとても柔らかく、知的で、信頼できるので、るみさんになら本音で話して大丈夫だと思える安心感があります。</div>
-              <div class="voice-meta">経営者・フリーランス</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">話しながら頭の中が整理され、前向きな気持ちになれました。</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">るみさんと会話をしていく中で、頭の中が徐々に整理され前向きな気持ちになれました。いつも相談者に寄り添い丁寧な会話のキャッチボールをしながら導いてくださる鑑定で、安心して様々な悩みを打ち明けられます。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">話しながら頭の中が整理され、前向きな気持ちになれました。</div>
-              <div class="voice-body">るみさんと会話をしていく中で、頭の中が徐々に整理され前向きな気持ちになれました。いつも相談者に寄り添い丁寧な会話のキャッチボールをしながら導いてくださる鑑定で、安心して様々な悩みを打ち明けられます。</div>
-              <div class="voice-meta">受講者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">うまくいかないことにも、理由と対策があるとわかりました。</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">思い切ってお願いして良かったです。瑠海さんの鑑定は、一般的には「良くない」とされそうなことも、良い悪いではなく「こういう星です」と事実を伝えてくれます。うまくいかないことも、うまくいくことも、理由があって対策もある。自分の星にあった対策を意識することで、より良い生き方、働き方ができる感覚がありました。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">うまくいかないことにも、理由と対策があるとわかりました。</div>
-              <div class="voice-body">思い切ってお願いして良かったです。瑠海さんの鑑定は、一般的には「良くない」とされそうなことも、良い悪いではなく「こういう星です」と事実を伝えてくれます。うまくいかないことも、うまくいくことも、理由があって対策もある。自分の星にあった対策を意識することで、より良い生き方、働き方ができる感覚がありました。</div>
-              <div class="voice-meta">受講者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">自分の「取扱い説明書」を読んだ気分です。</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">解説が「その通り！」ってものが多くて、漠然としていたものがすごく鮮明になったというか、解像度が上がった気がしました。自分の取扱い説明書を読んだ気分です。私は割と自分の本質通りに生きていたようなので、今の生き方や選択が間違っていないことがわかって自信に繋がりました！</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">自分の「取扱い説明書」を読んだ気分です。</div>
-              <div class="voice-body">解説が「その通り！」ってものが多くて、漠然としていたものがすごく鮮明になったというか、解像度が上がった気がしました。自分の取扱い説明書を読んだ気分です。私は割と自分の本質通りに生きていたようなので、今の生き方や選択が間違っていないことがわかって自信に繋がりました！</div>
-              <div class="voice-meta">受講者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">怪しさや曖昧さがなく、いつの間にか引き込まれていました。</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">目に見えないものをわかりやすく言語化し伝えてくださることによって、怪しさや曖昧さがないいつの間にか引き込まれていました。今まさに悩んでいることに対して、やるべきことや進むべき道の助言をいただけて心が軽くなりました！本当に受けてよかったのでまた道に迷った時にぜひ鑑定を受けたいと思っています！！</div></div></div>
 
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">心を悩ませていたモヤが晴れ、目の前がパッと明るくなりました。</div><div class="voice-card-footer"><div class="voice-meta">60代 事業主</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">2月で還暦を迎え、以前からずっと今後の人生や仕事について模索し迷っているところでした。今回の鑑定では私自身が持っている運勢や方向性だけではなく、ルミさんの豊かなビジネス経験や実績に基づいた的確なアドバイスをとても分かりやすく丁寧に教えていただきました。心を悩ませていたモヤが晴れて目の前がパッと明るくなりました！</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">怪しさや曖昧さがなく、いつの間にか引き込まれていました。</div>
-              <div class="voice-body">目に見えないものをわかりやすく言語化し伝えてくださることによって、怪しさや曖昧さがないいつの間にか引き込まれていました。今まさに悩んでいることに対して、やるべきことや進むべき道の助言をいただけて心が軽くなりました！本当に受けてよかったのでまた道に迷った時にぜひ鑑定を受けたいと思っています！！</div>
-              <div class="voice-meta">受講者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">自分がどうありたいかを改めて考え直す、良いきっかけになりました。</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">実はここ数年、自分の進む方向にずっとモヤモヤしていて、友達と飲んで酔っ払うとよく占いに行ってたんです笑。今考えると、誰かに背中を押してほしいって想いがずっとあったんだと思います。一度立ち止まって自分がどうありたいのかをしっかりと考え直す良いきっかけとなりました。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">心を悩ませていたモヤが晴れ、目の前がパッと明るくなりました。</div>
-              <div class="voice-body">2月で還暦を迎え、以前からずっと今後の人生や仕事について模索し迷っているところでした。今回の鑑定では私自身が持っている運勢や方向性だけではなく、ルミさんの豊かなビジネス経験や実績に基づいた的確なアドバイスをとても分かりやすく丁寧に教えていただきました。心を悩ませていたモヤが晴れて目の前がパッと明るくなりました！</div>
-              <div class="voice-meta">60代 事業主</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">1人では考えがまとまらないことを、一緒に整理してもらえます。</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">今後の活動に関していま考えていることに対し、鑑定結果を基に助言をいただけるのが非常に助かります！1人で考えているとどうしても考えがまとまらないことが多いのでありがたいです！</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">自分がどうありたいかを改めて考え直す、良いきっかけになりました。</div>
-              <div class="voice-body">実はここ数年、自分の進む方向にずっとモヤモヤしていて、友達と飲んで酔っ払うとよく占いに行ってたんです笑。今考えると、誰かに背中を押してほしいって想いがずっとあったんだと思います。一度立ち止まって自分がどうありたいのかをしっかりと考え直す良いきっかけとなりました。</div>
-              <div class="voice-meta">受講者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">運気に沿って行動することで、少しずつ好転している実感があります。</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">次々と湧き出てくる悩みに対し、解決策をわかりやすく提示してくださるのでいつも助かっています。運気に沿って行動することにより、少しずつ好転している実感があります。選択肢が増えて前に進めた感覚があります。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">1人では考えがまとまらないことを、一緒に整理してもらえます。</div>
-              <div class="voice-body">今後の活動に関していま考えていることに対し、鑑定結果を基に助言をいただけるのが非常に助かります！1人で考えているとどうしても考えがまとまらないことが多いのでありがたいです！</div>
-              <div class="voice-meta">受講者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">毎月の運気サポートで、「やってみよう！」と素直に思えます。</div><div class="voice-card-footer"><div class="voice-meta">ビジネスパートナーと受講</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">毎月、運気サポートをお願いしてますが、振り返りと来月の動き方を"今の私"に合った言葉でお伝えしてくれるので、素直に「やってみよう！」「意識しよう！」と思えます。まさかの相性鑑定まで見てくださり、2人で感動！！今回もありがとうございました！！！</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">運気に沿って行動することで、少しずつ好転している実感があります。</div>
-              <div class="voice-body">次々と湧き出てくる悩みに対し、解決策をわかりやすく提示してくださるのでいつも助かっています。運気に沿って行動することにより、少しずつ好転している実感があります。選択肢が増えて前に進めた感覚があります。</div>
-              <div class="voice-meta">受講者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">毎回タイムリーな話を相談でき、「今の私」に合ったアドバイスを。</div><div class="voice-card-footer"><div class="voice-meta">顧問クライアント</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">今月から天中殺に入りますが、この期間だからこそ内省し、自分の軸をしっかり持ち整えていく期間にしていきたいと強く思いました。盛りだくさんで、毎回タイムリーな話を相談できるので、本当にありがたいです！！今回も愛ある鑑定をありがとうございました！！！！！</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">毎月の運気サポートで、「やってみよう！」と素直に思えます。</div>
-              <div class="voice-body">毎月、運気サポートをお願いしてますが、振り返りと来月の動き方を"今の私"に合った言葉でお伝えしてくれるので、素直に「やってみよう！」「意識しよう！」と思えます。まさかの相性鑑定まで見てくださり、2人で感動！！今回もありがとうございました！！！</div>
-              <div class="voice-meta">ビジネスパートナーと受講</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">行動ベースに落とし込んでくれるから、実践しやすいが続きます。</div><div class="voice-card-footer"><div class="voice-meta">起業家</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">いつも具体的に行動ベースに落とし込んでくださるので、とても実践しやすいです。そして、変わったところはきちんと褒めてくださるので、「このままでいいんだ」と不安になった時にも思い出せて、ビジネスをする上でもすごく助かっています。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">毎回タイムリーな話を相談でき、「今の私」に合ったアドバイスを。</div>
-              <div class="voice-body">今月から天中殺に入りますが、この期間だからこそ内省し、自分の軸をしっかり持ち整えていく期間にしていきたいと強く思いました。盛りだくさんで、毎回タイムリーな話を相談できるので、本当にありがたいです！！今回も愛ある鑑定をありがとうございました！！！！！</div>
-              <div class="voice-meta">顧問クライアント</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">自分の扱い方を知ることで、1日の満足度が上がりました。</div><div class="voice-card-footer"><div class="voice-meta">クリエイター</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">三碧木星は音がキーワードになるという話を聞いて、動画編集をしている私は構成を考える上でまずBGMから決めるようにしてみました。そしたら、作成時間を明らかに短縮することができ、集中して作成することができました！自分の扱い方を理解できることで1日の満足度が増した気がします。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">行動ベースに落とし込んでくれるから、実践しやすいが続きます。</div>
-              <div class="voice-body">いつも具体的に行動ベースに落とし込んでくださるので、とても実践しやすいです。そして、変わったところはきちんと褒めてくださるので、「このままでいいんだ」と不安になった時にも思い出せて、ビジネスをする上でもすごく助かっています。</div>
-              <div class="voice-meta">起業家</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">運気を知ってみたら、仕事の依頼と体調崩しの日が一致！</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">初めて運氣を知って今月を見直してみたらビックリ！絶好調、頂点の日に仕事の依頼が来ているし、忍耐の日についやり過ぎて体調を崩してる。来月からは運氣を気にしながら動いてみます。楽しみが増えました。</div></div></div>
 
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">「怪しい」と思いながら受けました。受けて、本当によかったです。</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">鑑定って、ちょっと怪しい...と思う方もいるかもしれませんが、私はどうせ生きるなら幸せに生きたい、という想いがあって受けてみました。結果として、受けて本当によかったと思っています。自分がなぜこういう考え方をするのか、その理由がわかることで、自分との付き合い方や感情の扱い方も前向きに考えられるようになりました。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">自分の扱い方を知ることで、1日の満足度が上がりました。</div>
-              <div class="voice-body">三碧木星は音がキーワードになるという話を聞いて、動画編集をしている私は構成を考える上でまずBGMから決めるようにしてみました。そしたら、作成時間を明らかに短縮することができ、集中して作成することができました！自分の扱い方を理解できることで1日の満足度が増した気がします。</div>
-              <div class="voice-meta">クリエイター</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">自分の本質を知り、仕事への確信と自信が生まれました。</div><div class="voice-card-footer"><div class="voice-meta">トレーナー／イメコン</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">自分の本質や潜在意識を診断してもらって大切な気づきを得ました。トレーナーやイメージコンサルタントの仕事は、やはり自分の天職。これからも、お客様に楽しんでいただけるようなセッションを大切にしていきたいと思います。今日は、大切な気づきの時間をありがとうございました。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">運気を知ってみたら、仕事の依頼と体調崩しの日が一致！</div>
-              <div class="voice-body">初めて運氣を知って今月を見直してみたらビックリ！絶好調、頂点の日に仕事の依頼が来ているし、忍耐の日についやり過ぎて体調を崩してる。来月からは運氣を気にしながら動いてみます。楽しみが増えました。</div>
-              <div class="voice-meta">受講者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">アドバイスが例話と事例で説明してくださり、的確でした。</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">自分の持つ星について、前提の知識のご説明がとてもわかりやすい。今後の活動などにおいてのアドバイスが例話と事例を用いて説明してくださり、的確だと感じた。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">「怪しい」と思いながら受けました。受けて、本当によかったです。</div>
-              <div class="voice-body">鑑定って、ちょっと怪しい...と思う方もいるかもしれませんが、私はどうせ生きるなら幸せに生きたい、という想いがあって受けてみました。結果として、受けて本当によかったと思っています。自分がなぜこういう考え方をするのか、その理由がわかることで、自分との付き合い方や感情の扱い方も前向きに考えられるようになりました。</div>
-              <div class="voice-meta">受講者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">悩みがなくても、今後の動きが明確になりました。</div><div class="voice-card-footer"><div class="voice-meta">顧問クライアント</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">今回は具体的な悩みがなかったので「こんな私が鑑定を受けて大丈夫なのかな？」という気持ちがありましたが、前回までの振り返りや今後の運気にフォーカスを当てていただいて今後の動きが明確になりました。いつもわかりやすくアドバイスをくださるのでありがたいです！</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">自分の本質を知り、仕事への確信と自信が生まれました。</div>
-              <div class="voice-body">自分の本質や潜在意識を診断してもらって大切な気づきを得ました。トレーナーやイメージコンサルタントの仕事は、やはり自分の天職。これからも、お客様に楽しんでいただけるようなセッションを大切にしていきたいと思います。今日は、大切な気づきの時間をありがとうございました。</div>
-              <div class="voice-meta">トレーナー／イメコン</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">自分の状況を細かく丁寧に分析していただき、腑に落ちました。</div><div class="voice-card-footer"><div class="voice-meta">受講者</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">自分の状況をとても細かく丁寧に分析した内容をご説明いただき、とても腑に落ちました。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">アドバイスが例話と事例で説明してくださり、的確でした。</div>
-              <div class="voice-body">自分の持つ星について、前提の知識のご説明がとてもわかりやすい。今後の活動などにおいてのアドバイスが例話と事例を用いて説明してくださり、的確だと感じた。</div>
-              <div class="voice-meta">受講者</div>
-            </div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">スピ系は信じていませんでしたが、雑談だけで心当たりがありすぎて（笑）。引き寄せが起こるようになりました。</div><div class="voice-card-footer"><div class="voice-meta">フリーランス</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">運氣をはじめとして、スピ系のような要素のあるものはあまり信じていませんでした。ただ、雑談レベルで話していただく内容だけでも心当たりがありすぎて（笑）。四柱推命というのは根拠のない怪しいものじゃないこと、ビジネスで成功している人は存分に活用しているものなんだと知り、受けてみようと決意。今まで無意識で調子が良かったこと、悪かったことにも理由があったんだとわかり、それぞれの過ごし方を知ると、気持ちの持ち様が変わる——だから結果も変わってくる。今まであり得なかった大きい案件や、自分が関わりたいと思っていた案件のお声が掛かるように。引き寄せが起こるようになってきました。</div></div></div>
 
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">悩みがなくても、今後の動きが明確になりました。</div>
-              <div class="voice-body">今回は具体的な悩みがなかったので「こんな私が鑑定を受けて大丈夫なのかな？」という気持ちがありましたが、前回までの振り返りや今後の運気にフォーカスを当てていただいて今後の動きが明確になりました。いつもわかりやすくアドバイスをくださるのでありがたいです！</div>
-              <div class="voice-meta">顧問クライアント</div>
-            </div>
-
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">自分の状況を細かく丁寧に分析していただき、腑に落ちました。</div>
-              <div class="voice-body">自分の状況をとても細かく丁寧に分析した内容をご説明いただき、とても腑に落ちました。</div>
-              <div class="voice-meta">受講者</div>
-            </div>
-
-            <div class="voice-card">
-              <div class="voice-stars">★★★★★</div>
-              <div class="voice-headline">スピ系は信じていませんでしたが、雑談だけで心当たりがありすぎて（笑）。引き寄せが起こるようになりました。</div>
-              <div class="voice-body">運氣をはじめとして、スピ系のような要素のあるものはあまり信じていませんでした。ただ、雑談レベルで話していただく内容だけでも心当たりがありすぎて（笑）。四柱推命というのは根拠のない怪しいものじゃないこと、ビジネスで成功している人は存分に活用しているものなんだと知り、受けてみようと決意。今まで無意識で調子が良かったこと、悪かったことにも理由があったんだとわかり、それぞれの過ごし方を知ると、気持ちの持ち様が変わる——だから結果も変わってくる。今まであり得なかった大きい案件や、自分が関わりたいと思っていた案件のお声が掛かるように。引き寄せが起こるようになってきました。</div>
-              <div class="voice-meta">フリーランス</div>
-            </div>
-
-          </div><!-- /voice-track -->
-        </div><!-- /voice-overflow -->
-
-        <div class="voice-nav">
-          <button class="voice-btn" id="voicePrev" aria-label="前へ">&#8592;</button>
-          <div class="voice-dots" id="voiceDots"></div>
-          <button class="voice-btn" id="voiceNext" aria-label="次へ">&#8594;</button>
-        </div>
-      </div><!-- /voice-track-wrap -->
+      </div><!-- /voice-grid -->
     </div>
   </section>
 
@@ -1841,91 +1663,12 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', toggleFloatCta, { passive: true });
   toggleFloatCta();
 
-  // ── お客様の声 カルーセル ────────────────
-  var track  = document.getElementById('voiceTrack');
-  var prev   = document.getElementById('voicePrev');
-  var next   = document.getElementById('voiceNext');
-  var dotsWrap = document.getElementById('voiceDots');
-  if (!track) return;
-
-  var cards     = Array.from(track.children);
-  var total     = cards.length;
-  var current   = 0;
-
-  // responsive: how many cards visible
-  function perPage() {
-    if (window.innerWidth >= 1024) return 3;
-    if (window.innerWidth >= 768)  return 2;
-    return 1;
-  }
-
-  function maxIndex() { return Math.max(0, total - perPage()); }
-
-  // build dots
-  function buildDots() {
-    dotsWrap.innerHTML = '';
-    var steps = maxIndex() + 1;
-    for (var i = 0; i < steps; i++) {
-      var d = document.createElement('span');
-      d.className = 'voice-dot' + (i === current ? ' active' : '');
-      d.dataset.i = i;
-      d.addEventListener('click', function() { goTo(+this.dataset.i); });
-      dotsWrap.appendChild(d);
-    }
-  }
-
-  function goTo(idx) {
-    current = Math.min(Math.max(idx, 0), maxIndex());
-    var pp = perPage();
-    var cardW  = cards[0].getBoundingClientRect().width;
-    var gap    = 24;
-    track.style.transform = 'translateX(-' + (current * (cardW + gap)) + 'px)';
-    // update dots
-    var dots = dotsWrap.querySelectorAll('.voice-dot');
-    dots.forEach(function(d, i) {
-      d.classList.toggle('active', i === current);
+  // ── お客様の声 アコーディオン ────────────────
+  document.querySelectorAll('.voice-card-head').forEach(function(head) {
+    head.addEventListener('click', function() {
+      head.closest('.voice-card').classList.toggle('open');
     });
-    prev.disabled = current === 0;
-    next.disabled = current >= maxIndex();
-  }
-
-  prev.addEventListener('click', function() { goTo(current - 1); });
-  next.addEventListener('click', function() { goTo(current + 1); });
-
-  buildDots();
-  goTo(0);
-
-  // rebuild on resize
-  var resizeTimer;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-      current = Math.min(current, maxIndex());
-      buildDots();
-      goTo(current);
-    }, 120);
   });
-
-  // touch: swipe or tap left/right to navigate
-  var touchStartX = 0;
-  var touchStartY = 0;
-  var voiceOverflow = track.parentElement;
-  voiceOverflow.addEventListener('touchstart', function(e) {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-  voiceOverflow.addEventListener('touchend', function(e) {
-    var diffX = touchStartX - e.changedTouches[0].clientX;
-    var diffY = touchStartY - e.changedTouches[0].clientY;
-    if (Math.abs(diffX) > 30 && Math.abs(diffX) > Math.abs(diffY)) {
-      diffX > 0 ? goTo(current + 1) : goTo(current - 1);
-    } else if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) {
-      var rect = voiceOverflow.getBoundingClientRect();
-      var x = e.changedTouches[0].clientX - rect.left;
-      if (x < rect.width * 0.35) { goTo(current - 1); }
-      else if (x > rect.width * 0.65) { goTo(current + 1); }
-    }
-  }, { passive: true });
 
 });
 </script>
