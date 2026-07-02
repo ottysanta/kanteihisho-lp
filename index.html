@@ -500,9 +500,46 @@ td.highlight {
 .menu-card.navy-line { border-top: 4px solid var(--navy); }
 .menu-card.blue-line { border-top: 4px solid #8FB8D8; }
 .feature-list { margin-top: 18px; display: grid; gap: 8px; }
-.plan-range { margin-top: 16px; margin-bottom: 2px; font-weight: 700; color: var(--navy); font-size: 13px; }
-.plan-card.featured .plan-range { color: #fff; }
-.dark .plan-range { color: #fff; }
+/* サービス内容 / 鑑定範囲 の区分け */
+.plan-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 18px 0 6px;
+}
+.plan-section-label:first-of-type { margin-top: 20px; }
+.plan-card.featured .plan-section-label { color: rgba(255,255,255,0.5); }
+.dark .plan-section-label { color: rgba(255,255,255,0.45); }
+.plan-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 18px 0 0;
+}
+.plan-card.featured .plan-divider { border-top-color: rgba(255,255,255,0.18); }
+.plan-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.plan-tag {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--bg);
+  color: var(--navy);
+  border: 1px solid var(--line);
+  line-height: 1.5;
+}
+.plan-card.featured .plan-tag {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.9);
+  border-color: rgba(255,255,255,0.22);
+}
+.dark .plan-tag {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.2);
+}
 .feature-list li {
   position: relative;
   padding-left: 22px;
@@ -1553,7 +1590,7 @@ section[id], [id] { scroll-margin-top: 80px; }
       <h2 class="section-title">ご利用の流れ</h2>
       <div class="flow-grid">
         <div class="flow-step-card"><div class="flow-num">1</div><h3>LINEで相談</h3><p>相談・質問だけでも構いません。まず状況をお聞かせください。</p></div>
-        <div class="flow-step-card"><div class="flow-num">2</div><h3>ヒアリングシート記入</h3><p>プランと鑑定テーマを確認し、必要な情報を整理します。</p></div>
+        <div class="flow-step-card"><div class="flow-num">2</div><h3>お申し込みフォーム記入</h3><p>プランと鑑定テーマを確認し、必要な情報を整理します。</p></div>
         <div class="flow-step-card"><div class="flow-num">3</div><h3>Zoom鑑定</h3><p>初回スポットは15分ヒアリング＋60分鑑定（計75分）、顧問は月1回60分を基本に実施します。</p></div>
         <div class="flow-step-card"><div class="flow-num">4</div><h3>鑑定レポート納品</h3><p>セッション内容を記録・整理し、後から読み返せる形でPDF納品します。</p></div>
       </div>
@@ -1569,18 +1606,30 @@ section[id], [id] { scroll-margin-top: 80px; }
           <h3>鑑定秘書™ スポット</h3>
           <div class="price">55,000円</div>
           <div class="tax">／回（税込）・50,000円／回（税抜）</div>
+          <p class="plan-section-label">サービス内容</p>
           <ul class="feature-list"><li>経営判断セッション（75分）</li><li>鑑定レポート</li></ul>
-          <div class="plan-range">【鑑定範囲】 ※3テーマまで</div>
-          <ul class="feature-list"><li>経営判断鑑定</li><li>自己人格鑑定</li><li>事業相性鑑定</li></ul>
+          <hr class="plan-divider">
+          <p class="plan-section-label">鑑定範囲</p>
+          <div class="plan-tags">
+            <span class="plan-tag">自己人格鑑定</span>
+            <span class="plan-tag">事業相性鑑定</span>
+            <span class="plan-tag">経営判断鑑定</span>
+          </div>
           <div class="target">まず一度、体感したい方へ</div>
         </div>
         <div class="plan-card">
           <h3>鑑定秘書™ スタンダード</h3>
           <div class="price">660,000円</div>
           <div class="tax">／年（税込）・600,000円／年（税抜）</div>
+          <p class="plan-section-label">サービス内容</p>
           <ul class="feature-list"><li>月次定例セッション（60分/月1回）</li><li>月次経営判断レポート</li></ul>
-          <div class="plan-range">【鑑定範囲】 ※3テーマまで</div>
-          <ul class="feature-list"><li>経営判断鑑定</li><li>自己人格鑑定</li><li>事業相性鑑定</li></ul>
+          <hr class="plan-divider">
+          <p class="plan-section-label">鑑定範囲</p>
+          <div class="plan-tags">
+            <span class="plan-tag">自己人格鑑定</span>
+            <span class="plan-tag">事業相性鑑定</span>
+            <span class="plan-tag">経営判断鑑定</span>
+          </div>
           <div class="target">定期的に伴走してほしい方へ</div>
         </div>
         <div class="plan-card featured">
@@ -1588,9 +1637,18 @@ section[id], [id] { scroll-margin-top: 80px; }
           <h3>鑑定秘書™ プレミアム</h3>
           <div class="price">1,320,000円</div>
           <div class="tax">／年（税込）・1,200,000円／年（税抜）</div>
+          <p class="plan-section-label">サービス内容</p>
           <ul class="feature-list"><li>月次定例セッション（60分/月1回）</li><li>鑑定レポート納品</li><li>指針カレンダー</li><li>緊急相談対応（30分）</li><li>会食やイベントの出張鑑定</li></ul>
-          <div class="plan-range">【鑑定範囲】 ※5テーマまで</div>
-          <ul class="feature-list"><li>経営判断鑑定</li><li>自己人格鑑定</li><li>人材相性・適性鑑定</li><li>事業方位鑑定（出店、移転、出張、会食）</li><li>商談・契約・イベント日鑑定</li></ul>
+          <hr class="plan-divider">
+          <p class="plan-section-label">鑑定範囲</p>
+          <div class="plan-tags">
+            <span class="plan-tag">自己人格鑑定</span>
+            <span class="plan-tag">事業相性鑑定</span>
+            <span class="plan-tag">経営判断鑑定</span>
+            <span class="plan-tag">人材相性・適性鑑定</span>
+            <span class="plan-tag">事業方位鑑定</span>
+            <span class="plan-tag">商談・契約・イベント日鑑定</span>
+          </div>
           <div class="target">本気で拡大フェーズを越えたい方へ</div>
         </div>
       </div>
@@ -1666,9 +1724,9 @@ section[id], [id] { scroll-margin-top: 80px; }
     <div class="container">
       <h2 class="cta-title">重要な判断の前に、<br>一度だけ鑑定を受けてみてください。</h2>
       <div class="plan-grid">
-        <div class="plan-card" style="background:rgba(255,255,255,0.06);border-color:rgba(216,168,63,0.35);"><h3 style="color:var(--gold);">鑑定秘書™ スポット</h3><div class="price" style="color:#fff;">55,000円</div><div class="tax">／回（税込）・50,000円／回（税抜）</div><ul class="feature-list"><li>経営判断セッション（75分）</li><li>鑑定レポート</li></ul><div class="plan-range">【鑑定範囲】 ※3テーマまで</div><ul class="feature-list"><li>経営判断鑑定</li><li>自己人格鑑定</li><li>事業相性鑑定</li></ul><div class="target">まず一度、体感したい方へ</div></div>
-        <div class="plan-card" style="background:rgba(255,255,255,0.06);border-color:rgba(216,168,63,0.35);"><h3 style="color:var(--gold);">鑑定秘書™ スタンダード</h3><div class="price" style="color:#fff;">660,000円</div><div class="tax">／年（税込）・600,000円／年（税抜）</div><ul class="feature-list"><li>月次定例セッション（60分/月1回）</li><li>月次経営判断レポート</li></ul><div class="plan-range">【鑑定範囲】 ※3テーマまで</div><ul class="feature-list"><li>経営判断鑑定</li><li>自己人格鑑定</li><li>事業相性鑑定</li></ul><div class="target">定期的に伴走してほしい方へ</div></div>
-        <div class="plan-card featured"><div class="plan-badge">おすすめ</div><h3>鑑定秘書™ プレミアム</h3><div class="price">1,320,000円</div><div class="tax">／年（税込）・1,200,000円／年（税抜）</div><ul class="feature-list"><li>月次定例セッション（60分/月1回）</li><li>鑑定レポート納品</li><li>指針カレンダー</li><li>緊急相談対応（30分）</li><li>会食やイベントの出張鑑定</li></ul><div class="plan-range">【鑑定範囲】 ※5テーマまで</div><ul class="feature-list"><li>経営判断鑑定</li><li>自己人格鑑定</li><li>人材相性・適性鑑定</li><li>事業方位鑑定（出店、移転、出張、会食）</li><li>商談・契約・イベント日鑑定</li></ul><div class="target">本気で拡大フェーズを越えたい方へ</div></div>
+        <div class="plan-card" style="background:rgba(255,255,255,0.06);border-color:rgba(216,168,63,0.35);"><h3 style="color:var(--gold);">鑑定秘書™ スポット</h3><div class="price" style="color:#fff;">55,000円</div><div class="tax">／回（税込）・50,000円／回（税抜）</div><p class="plan-section-label">サービス内容</p><ul class="feature-list"><li>経営判断セッション（75分）</li><li>鑑定レポート</li></ul><hr class="plan-divider"><p class="plan-section-label">鑑定範囲</p><div class="plan-tags"><span class="plan-tag">自己人格鑑定</span><span class="plan-tag">事業相性鑑定</span><span class="plan-tag">経営判断鑑定</span></div><div class="target">まず一度、体感したい方へ</div></div>
+        <div class="plan-card" style="background:rgba(255,255,255,0.06);border-color:rgba(216,168,63,0.35);"><h3 style="color:var(--gold);">鑑定秘書™ スタンダード</h3><div class="price" style="color:#fff;">660,000円</div><div class="tax">／年（税込）・600,000円／年（税抜）</div><p class="plan-section-label">サービス内容</p><ul class="feature-list"><li>月次定例セッション（60分/月1回）</li><li>月次経営判断レポート</li></ul><hr class="plan-divider"><p class="plan-section-label">鑑定範囲</p><div class="plan-tags"><span class="plan-tag">自己人格鑑定</span><span class="plan-tag">事業相性鑑定</span><span class="plan-tag">経営判断鑑定</span></div><div class="target">定期的に伴走してほしい方へ</div></div>
+        <div class="plan-card featured"><div class="plan-badge">おすすめ</div><h3>鑑定秘書™ プレミアム</h3><div class="price">1,320,000円</div><div class="tax">／年（税込）・1,200,000円／年（税抜）</div><p class="plan-section-label">サービス内容</p><ul class="feature-list"><li>月次定例セッション（60分/月1回）</li><li>鑑定レポート納品</li><li>指針カレンダー</li><li>緊急相談対応（30分）</li><li>会食やイベントの出張鑑定</li></ul><hr class="plan-divider"><p class="plan-section-label">鑑定範囲</p><div class="plan-tags"><span class="plan-tag">自己人格鑑定</span><span class="plan-tag">事業相性鑑定</span><span class="plan-tag">経営判断鑑定</span><span class="plan-tag">人材相性・適性鑑定</span><span class="plan-tag">事業方位鑑定</span><span class="plan-tag">商談・契約・イベント日鑑定</span></div><div class="target">本気で拡大フェーズを越えたい方へ</div></div>
       </div>
       <div class="cta-steps"><span>① LINEで相談</span><span>② プランのヒアリング</span><span>③ 鑑定スタート</span></div>
       <a href="https://line.me/ti/p/%40253xhxgj" target="_blank" rel="noopener noreferrer" class="btn line">LINEで相談してみる</a>
