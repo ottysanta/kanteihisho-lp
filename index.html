@@ -199,6 +199,7 @@ li { list-style: none; }
   line-height: 1.55;
   font-weight: 700;
   margin-bottom: 22px;
+  text-indent: -1em;
 }
 .hero h1 em {
   color: var(--gold);
@@ -1192,7 +1193,10 @@ footer {
   .header-cta { min-height: 44px; padding: 9px 12px; font-size: 12px; }
   .hero { padding: 36px 0 56px; }
   .hero-copy { padding: 0; }
-  .hero h1 { font-size: 28px; line-height: 1.55; text-indent: 0; }
+  .hero h1 { font-size: 26px; line-height: 1.55; text-indent: 0; }
+  /* 狭い端末では「それでも、」「動けなかった。」」の間で折り返し、はみ出しを防ぐ */
+  .hero h1 .nb { white-space: normal; }
+  .hero h1 em { display: inline-block; }
   .hero-main { font-size: 16px; }
   .hero-inner > .hero-visual { display: none; }
   .hero-visual-mobile {
@@ -1277,7 +1281,7 @@ section[id], [id] { scroll-margin-top: 80px; }
     <div class="container hero-inner">
       <div class="hero-copy">
         <div class="hero-kicker"><span class="kicker-l1">「なぜか動けない」を抱えたまま、</span><span class="kicker-l2">重要な判断を迫られている経営者へ</span></div>
-        <h1><span class="nb">コンサルに聞いた。</span><br><span class="nb">答えは出た。</span><br><span class="nb"><em>それでも、</em><em>動けなかった。</em></span></h1>
+        <h1><span class="nb">「コンサルに聞いた。</span><br><span class="nb">答えは出た。</span><br><span class="nb"><em>それでも、</em><em>動けなかった。</em>」</span></h1>
         <p class="hero-main">経営者の判断を止めているのは、能力ではない。<br>「数字には映らない軸」が整っていないからだ。</p>
         <p class="hero-note">経営者のための意思決定支援サービス。<br>四柱推命×九星氣学×方位学から、<br>事業・人・時期・方位を多角的に読み解き、<br>経営判断を継続的に支援します。</p>
         <p class="hero-tagline">あなたの決断のそばに、専属の「鑑定秘書™」を。</p>
@@ -1576,7 +1580,7 @@ section[id], [id] { scroll-margin-top: 80px; }
 
         <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">グループ3店舗の整体院が、1年で18店舗まで拡大しました。</div><div class="voice-card-footer"><div class="voice-meta">整体院グループ FCオーナー</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">率直に受けて本当によかったです。自己理解は前提大切だと思っています。プラスで周りの役員やFCオーナーさん、家族とどのように関わったらより良く周りの方々も成長しつつうまくいくか知れたことは、自身の立ち振る舞いの上でも勉強になりました。事業や生活のコミュニケーションでも活かせています。また、月毎にどういうことを意識して行動すれば良いか具体的に教えていただけるので、意識しつつ常にトライアンドエラーを繰り返せています。グループ3店舗だった整体院が1年で18店舗まで一気に拡大し、ご紹介数も嬉しい悲鳴をあげる状態になれているのは、運気を意識したからだと勝手に思っています。</div></div></div>
 
-        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">占いに懐疑的だった私が、会社員時代の月収を超えました。</div><div class="voice-card-footer"><div class="voice-meta">独立起業家</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">四柱推命というのは根拠のない怪しいものじゃないこと、ビジネスで成功している人は存分に活用しているものなんだと知りました。鑑定を受けてから、集客せずにお仕事が舞い込むようになり、会社員時代の月収を超えられるようになりました。</div></div></div>
+        <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">占いに懐疑的だった私が、会社員時代の月収を超えました。</div><div class="voice-card-footer"><div class="voice-meta">独立起業家</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">鑑定というのは根拠のない怪しいものじゃないこと、ビジネスで成功している人は存分に活用しているものなんだと知りました。鑑定を受けてから、集客せずにお仕事が舞い込むようになり、会社員時代の月収を超えられるようになりました。</div></div></div>
 
         <div class="voice-card"><div class="voice-card-head"><div class="voice-stars">★★★★★</div><div class="voice-headline">まさにコンサル以上のコンサル。本当に助かっています。</div><div class="voice-card-footer"><div class="voice-meta">事業主</div><span class="voice-expand-icon">＋</span></div></div><div class="voice-body-wrap"><div class="voice-body">毎月感じていることですが、本当に私のアカウントを丁寧に見てくださり、持っている特性や星の特徴をもとに「こうすればもっと届くよね」と具体的にアドバイスをいただけるのが、とても心強いです。まさにコンサル以上のコンサルをしていただいているようで、本当に助かっています。</div></div></div>
 
@@ -1874,7 +1878,7 @@ section[id], [id] { scroll-margin-top: 80px; }
     <div class="ps-inner">
       <span class="ps-label">追伸</span>
       <div class="ps-body">
-        <strong>経営者は、孤独です。</strong><br><br>
+        <strong>経営者は、孤独です</strong><br><br>
         「この判断は正しいのか」——その問いを、心から打ち明けられる相手が、何人いるでしょうか。<br><br>
         家族に話せば、心配させる。<br>
         社員に見せれば、頼られている立場が崩れる。<br>
