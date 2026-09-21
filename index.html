@@ -665,7 +665,7 @@ td.highlight {
 .plan-card.premium {
   background: linear-gradient(180deg, #FFFBF0, var(--white) 55%);
   border: 2px solid var(--gold);
-  transform: translateY(-8px);
+  margin-top: -8px;
 }
 .plan-catch {
   color: #7A5E0A;
@@ -733,16 +733,44 @@ td.highlight {
   font-size: 13px;
   font-weight: 700;
 }
-.plan-items .plan-include {
-  justify-content: center;
-  padding: 8px 12px;
+/* プレミアム: 「スタンダードプランの全内容」を価値として目立たせ、＋は枠の外に置く */
+.plan-include {
+  padding: 14px 12px;
   border-radius: 8px;
-  border: 1px dashed var(--gold);
+  background: linear-gradient(180deg, #E5BE58, var(--gold));
+  color: var(--deep);
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(216,168,63,0.25);
+}
+.plan-include strong { font-size: 18px; margin-left: 2px; }
+.plan-plus {
+  color: var(--gold);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  margin: 12px 0;
+}
+.plan-card.premium .plan-items { gap: 14px; }
+/* 重要人物の人数: 鑑定内容全体にかかるルールなので、項目とは別の囲みにする */
+.plan-rule {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(216,168,63,0.55);
   background: var(--white);
   color: var(--navy);
   font-size: 14px;
   font-weight: 700;
   text-align: center;
+}
+.plan-rule small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
 }
 .plan-card.navy h3,
 .plan-card.navy .price,
@@ -1231,7 +1259,7 @@ footer {
   .strength-card { min-height: 0; }
   .profile-card { padding: 18px; }
   .profile-card img { width: 100%; }
-  .plan-card.premium { transform: none; }
+  .plan-card.premium { margin-top: 0; }
   .plan-grid { gap: 28px; }
   .cta-steps { flex-wrap: nowrap; gap: 6px; }
   .cta-steps span { flex: 1; text-align: center; font-size: 12px; padding: 8px 6px; }
@@ -1429,7 +1457,7 @@ section[id], [id] { scroll-margin-top: 80px; }
       <h2 class="section-title">情報が増えた時代に、<br>なぜ判断はさらに難しくなったのか</h2>
       <p class="section-lead">「出店すべきか」を検索し、データを集め、コンサルに相談した。答えは返ってくる。論理的で、網羅的で、整理されている。それでも——決断はできなかった。情報があるのに動けない理由は、「数字では見えない軸」が整っていないからです。</p>
       <div class="mini-grid">
-        <div class="mini-card"><strong>数字に見えないこと①</strong><p>今年があなたにとって「動く年」か「整える年」か。運気のサイクルの中で今どこにいるかは、命式と気学を重ねて初めて見えます。</p></div>
+        <div class="mini-card"><strong>数字に見えないこと①</strong><p>今年があなたにとって「動く年」か「整える年」か。運気のサイクルの中で今どこにいるかは、命式と氣学を重ねて初めて見えます。</p></div>
         <div class="mini-card"><strong>数字に見えないこと②</strong><p>その候補者があなたの組織と本質的に合うかどうか。相性は履歴書にも面接にも出ません。四柱推命で初めて整理できる次元があります。</p></div>
         <div class="mini-card"><strong>数字に見えないこと③</strong><p>その出店地・契約日・登記日があなたにとって吉方位かどうか。場所と時間の軸は、財務分析とは別の次元で結果に影響します。</p></div>
       </div>
@@ -1712,13 +1740,14 @@ section[id], [id] { scroll-margin-top: 80px; }
           <p class="plan-section-label">こんな方におすすめ</p>
           <ul class="feature-list"><li>組織づくりやチーム編成を相談したい</li><li>採用・人材配置の判断に活用したい</li><li>経営に関わる重要人物との相性を見たい</li></ul>
           <p class="plan-section-label">鑑定内容</p>
+          <div class="plan-include">スタンダードプランの<strong>全内容</strong></div>
+          <div class="plan-plus" aria-hidden="true">＋</div>
           <ul class="plan-items">
-            <li class="plan-include">スタンダードプランの全内容 ＋</li>
             <li><span class="plan-icon" aria-hidden="true">人</span><span>人材鑑定<small>適性・才能・強みの分析</small></span></li>
             <li><span class="plan-icon" aria-hidden="true">採</span><span>採用鑑定<small>採用候補者との相性・適性</small></span></li>
             <li><span class="plan-icon" aria-hidden="true">組</span><span>組織鑑定<small>配置・役割・チーム編成</small></span></li>
-            <li><span class="plan-icon" aria-hidden="true">重</span><span>重要人物 月3名まで<small>※経営者本人は人数に含みません</small></span></li>
           </ul>
+          <p class="plan-rule">重要人物 月3名まで<small>※経営者本人は人数に含みません</small></p>
           <p class="plan-section-label">サービス内容</p>
           <ul class="plan-items">
             <li><span class="plan-icon" aria-hidden="true">月</span><span>月次鑑定 60分／月1回<small>オンラインまたは対面</small></span></li>
@@ -1855,13 +1884,14 @@ section[id], [id] { scroll-margin-top: 80px; }
           <p class="plan-section-label">こんな方におすすめ</p>
           <ul class="feature-list"><li>組織づくりやチーム編成を相談したい</li><li>採用・人材配置の判断に活用したい</li><li>経営に関わる重要人物との相性を見たい</li></ul>
           <p class="plan-section-label">鑑定内容</p>
+          <div class="plan-include">スタンダードプランの<strong>全内容</strong></div>
+          <div class="plan-plus" aria-hidden="true">＋</div>
           <ul class="plan-items">
-            <li class="plan-include">スタンダードプランの全内容 ＋</li>
             <li><span class="plan-icon" aria-hidden="true">人</span><span>人材鑑定<small>適性・才能・強みの分析</small></span></li>
             <li><span class="plan-icon" aria-hidden="true">採</span><span>採用鑑定<small>採用候補者との相性・適性</small></span></li>
             <li><span class="plan-icon" aria-hidden="true">組</span><span>組織鑑定<small>配置・役割・チーム編成</small></span></li>
-            <li><span class="plan-icon" aria-hidden="true">重</span><span>重要人物 月3名まで<small>※経営者本人は人数に含みません</small></span></li>
           </ul>
+          <p class="plan-rule">重要人物 月3名まで<small>※経営者本人は人数に含みません</small></p>
           <p class="plan-section-label">サービス内容</p>
           <ul class="plan-items">
             <li><span class="plan-icon" aria-hidden="true">月</span><span>月次鑑定 60分／月1回<small>オンラインまたは対面</small></span></li>
@@ -1889,8 +1919,7 @@ section[id], [id] { scroll-margin-top: 80px; }
         「この判断は正しいのか」——その問いを、心から打ち明けられる相手が、何人いるでしょうか。<br><br>
         家族に話せば、心配させる。<br>
         社員に見せれば、頼られている立場が崩れる。<br>
-        仲間に相談すれば、弱みを見せることになる。<br>
-        コンサルは数字を語るが、「なぜ今の自分は動けないのか」には答えてくれない。<br><br>
+        仲間に相談すれば、弱みを見せることになる。<br><br>
         その孤独を、ずっと抱えてきた経営者を、私は何人も見てきました。<br><br>
         <span class="ps-quote">「本当のことを話せる場所が、なかったんです」</span><br><br>
         そう言った経営者は、一人ではありませんでした。<br><br>
