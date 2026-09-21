@@ -1229,7 +1229,8 @@ footer {
   .header-cta { min-height: 44px; padding: 9px 12px; font-size: 12px; }
   .hero { padding: 36px 0 56px; }
   .hero-copy { padding: 0; }
-  .hero h1 { font-size: 26px; line-height: 1.55; padding-left: 1em; text-indent: -1em; }
+  /* SPは大きく見せる。画面幅に合わせて最大32pxまで（「それでも、」「動けなかった。」」は2行に分ける） */
+  .hero h1 { font-size: min(32px, 8.4vw); line-height: 1.45; padding-left: 1em; text-indent: -1em; }
   /* 狭い端末では「それでも、」「動けなかった。」」の間で折り返し、はみ出しを防ぐ */
   .hero h1 .nb { white-space: normal; }
   .hero h1 em { display: inline-block; text-indent: 0; }
@@ -1294,10 +1295,6 @@ section[id], [id] { scroll-margin-top: 80px; }
 }
 
 
-/* 狭い端末（〜400px）ではh1を一段小さくし、閉じカギ「」」だけが改行されないようにする */
-@media (max-width: 400px) {
-  .hero h1 { font-size: 24px; }
-}
 </style>
 </head>
 <body>
