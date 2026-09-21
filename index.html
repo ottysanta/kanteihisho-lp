@@ -206,6 +206,7 @@ li { list-style: none; }
   font-style: normal;
 }
 .hero h1 .nb { white-space: nowrap; }
+.hero h1 .nw { white-space: nowrap; }
 .hero-main {
   color: var(--text);
   font-size: 18px;
@@ -1258,6 +1259,10 @@ section[id], [id] { scroll-margin-top: 80px; }
 }
 
 
+/* 狭い端末（〜400px）ではh1を一段小さくし、閉じカギ「」」だけが改行されないようにする */
+@media (max-width: 400px) {
+  .hero h1 { font-size: 24px; }
+}
 </style>
 </head>
 <body>
@@ -1281,7 +1286,7 @@ section[id], [id] { scroll-margin-top: 80px; }
     <div class="container hero-inner">
       <div class="hero-copy">
         <div class="hero-kicker"><span class="kicker-l1">「なぜか動けない」を抱えたまま、</span><span class="kicker-l2">重要な判断を迫られている経営者へ</span></div>
-        <h1><span class="nb">「コンサルに聞いた。</span><br><span class="nb">答えは出た。</span><br><span class="nb"><em>それでも、</em><em>動けなかった。</em>」</span></h1>
+        <h1><span class="nb">「コンサルに聞いた。</span><br><span class="nb">答えは出た。</span><br><span class="nb"><em>それでも、</em><span class="nw"><em>動けなかった。</em>」</span></span></h1>
         <p class="hero-main">経営者の判断を止めているのは、能力ではない。<br>「数字には映らない軸」が整っていないからだ。</p>
         <p class="hero-note">経営者のための意思決定支援サービス。<br>四柱推命×九星氣学×方位学から、<br>事業・人・時期・方位を多角的に読み解き、<br>経営判断を継続的に支援します。</p>
         <p class="hero-tagline">あなたの決断のそばに、専属の「鑑定秘書™」を。</p>
@@ -1362,9 +1367,9 @@ section[id], [id] { scroll-margin-top: 80px; }
       <div class="risk-copy">
         <span class="eyebrow">The Risk</span>
         <h2 class="section-title">一度の判断ミスが、<br>3年分の遅れになる</h2>
-        <p>経営判断のミスは、すぐには見えない。誤った出店をした翌月に、それが失敗だとわかる経営者はいない。採用した幹部が問題を起こすのは、半年後か一年後だ。</p>
-        <p>見落とした時期の損失は、後から「あの時」と気づく。経営判断の怖さは、その遅効性にある。</p>
-        <p>しかし——判断の質は、判断材料の質で決まる。材料が揃っていれば、人は動ける。材料が欠けていれば、どれだけ優秀な経営者でも動けない。</p>
+        <p>経営判断のミスは、すぐには見えません。誤った出店をした翌月に、それが失敗だとわかる経営者はいません。採用した幹部が問題を起こすのは、半年後か一年後です。</p>
+        <p>見落とした時期の損失は、後から「あの時」と気づきます。経営判断の怖さは、その遅効性にあります。</p>
+        <p>しかし——判断の質は、判断材料の質で決まります。材料が揃っていれば、人は動けます。材料が欠けていれば、どれだけ優秀な経営者でも動けません。</p>
       </div>
       <div class="impact-list">
         <div class="impact-card">あの共同経営を受けていれば、と後悔したとしたらー</div>
@@ -1379,7 +1384,7 @@ section[id], [id] { scroll-margin-top: 80px; }
     <div class="container">
       <span class="eyebrow">Solution</span>
       <h2 class="section-title">数字が揃っていても、<br>動けない理由がある</h2>
-      <p class="section-lead">コンサルタントは財務を語る。弁護士はリスクを語る。税理士は税務を語る。それぞれに価値がある。しかし彼らが語れないことがある。「今がその人と組む年なのか」「その場所が合っているのか」「この流れで動くべき時期なのか」——これを整理してくれる専門家は、今の日本のビジネス界にほぼ存在しない。</p>
+      <p class="section-lead">コンサルタントは財務を語ります。弁護士はリスクを語ります。税理士は税務を語ります。それぞれに価値があります。しかし彼らが語れないことがあります。「今がその人と組む年なのか」「その場所が合っているのか」「この流れで動くべき時期なのか」——これを整理してくれる専門家は、今の日本のビジネス界にほぼ存在しません。</p>
     </div>
   </section>
 
@@ -1389,9 +1394,9 @@ section[id], [id] { scroll-margin-top: 80px; }
       <h2 class="section-title">その「見えない軸」を整理するのが、鑑定秘書™です</h2>
       <p class="section-lead about-lead">四柱推命・九星氣学・方位学という東洋に古くから伝わる鑑定手法を用いて、<br>経営者の意思決定にもうひとつの判断軸を提供します。<br>決断の質を高めるための——「伴走型意思決定支援サービス」です。</p>
       <div class="what-grid">
-        <div class="info-card"><div class="icon-circle">人</div><h3>人を読む</h3><p>採用・共同経営・提携相手の判断に、履歴書では見えない次元を整理する。</p></div>
-        <div class="info-card"><div class="icon-circle">時</div><h3>時流を読む</h3><p>9年・9ヶ月の運気サイクルから、今が「動く年」か「整える年」かを見極める。</p></div>
-        <div class="info-card"><div class="icon-circle">方</div><h3>場所を見る</h3><p>出店・移転・登記の時期と方角を鑑定し、候補を整理する。</p></div>
+        <div class="info-card"><div class="icon-circle">人</div><h3>人を読む</h3><p>採用・共同経営・提携相手の判断に、履歴書では見えない次元を整理します。</p></div>
+        <div class="info-card"><div class="icon-circle">時</div><h3>時流を読む</h3><p>9年・9ヶ月の運気サイクルから、今が「動く年」か「整える年」かを見極めます。</p></div>
+        <div class="info-card"><div class="icon-circle">方</div><h3>場所を見る</h3><p>出店・移転・登記の時期と方角を鑑定し、候補を整理します。</p></div>
       </div>
     </div>
   </section>
