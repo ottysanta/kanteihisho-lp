@@ -1084,8 +1084,11 @@ td.highlight {
 }
 
 .sp-only { display: none; }
+/* 途中で改行させたくない語句（SPで1〜2文字だけ次の行に落ちるのを防ぐ） */
+.nobr { white-space: nowrap; }
 @media (max-width: 767px) {
   .sp-only { display: inline; }
+  .pc-only { display: none; }
   .hero-kicker { display: block; }
   .kicker-l1 { display: block; }
   .kicker-l2 { display: block; padding-left: 1.5em; }
@@ -1226,10 +1229,10 @@ footer {
   .header-cta { min-height: 44px; padding: 9px 12px; font-size: 12px; }
   .hero { padding: 36px 0 56px; }
   .hero-copy { padding: 0; }
-  .hero h1 { font-size: 26px; line-height: 1.55; text-indent: 0; }
+  .hero h1 { font-size: 26px; line-height: 1.55; padding-left: 1em; text-indent: -1em; }
   /* 狭い端末では「それでも、」「動けなかった。」」の間で折り返し、はみ出しを防ぐ */
   .hero h1 .nb { white-space: normal; }
-  .hero h1 em { display: inline-block; }
+  .hero h1 em { display: inline-block; text-indent: 0; }
   .hero-main { font-size: 16px; }
   .hero-inner > .hero-visual { display: none; }
   .hero-visual-mobile {
@@ -1321,7 +1324,7 @@ section[id], [id] { scroll-margin-top: 80px; }
         <h1><span class="nb">「コンサルに聞いた。</span><br><span class="nb">答えは出た。</span><br><span class="nb"><em>それでも、</em><span class="nw"><em>動けなかった。</em>」</span></span></h1>
         <p class="hero-main">経営者の判断を止めているのは、能力ではない。<br>「数字には映らない軸」が整っていないからだ。</p>
         <p class="hero-note">経営者のための意思決定支援サービス。<br>四柱推命×九星氣学×方位学から、<br>事業・人・時期・方位を多角的に読み解き、<br>経営判断を継続的に支援します。</p>
-        <p class="hero-tagline">あなたの決断のそばに、専属の「鑑定秘書™」を。</p>
+        <p class="hero-tagline">あなたの決断のそばに、<br class="sp-only">専属の「鑑定秘書™」を。</p>
         <div class="hero-visual-mobile">
           <div class="hero-photo-shell">
             <img src="public/images/appraiser-jacket.png" alt="鑑定秘書™ 代表鑑定士 加藤瑠海" loading="lazy">
@@ -1405,7 +1408,7 @@ section[id], [id] { scroll-margin-top: 80px; }
       </div>
       <div class="impact-list">
         <div class="impact-card">あの共同経営を受けていれば、と後悔したとしたら——</div>
-        <div class="impact-card">採用した幹部が組織を壊したとしたら——</div>
+        <div class="impact-card">採用した幹部が組織を壊した<span class="nobr">としたら——</span></div>
         <div class="impact-card">1億円を前に止まったまま、3年が過ぎたとしたら——</div>
       </div>
       <div class="impact-sep">まだ、間に合います</div>
@@ -1437,7 +1440,7 @@ section[id], [id] { scroll-margin-top: 80px; }
     <div class="container">
       <span class="eyebrow">Comparison</span>
       <h2 class="section-title">鑑定秘書™は、<br>どこにも属さない</h2>
-      <p class="section-lead">経営コンサルにもスピリチュアル系にも、それぞれの価値があります。しかし「経営判断の壁打ち」という観点では、どれも何かが足りません。</p>
+      <p class="section-lead">経営コンサルにもスピリチュアル系にも、それぞれの価値があります。しかし「経営判断の壁打ち」という観点では、どれも何かが<span class="nobr">足りません。</span></p>
       <div class="comparison-wrap">
         <table>
           <thead>
@@ -1552,7 +1555,7 @@ section[id], [id] { scroll-margin-top: 80px; }
   <section class="section dark">
     <div class="container">
       <span class="eyebrow">Brand Story</span>
-      <h2 class="section-title">「鑑定秘書™」という名前に<br>込めた意味</h2>
+      <h2 class="section-title">「鑑定秘書™」という<br class="sp-only">名前に<br class="pc-only">込めた意味</h2>
       <p class="section-lead">秘書は、表舞台に立ちません。しかし——重要な局面では、必ずそこにいます。スケジュールを管理するように、私は経営者の「人・判断・時期」を整理し、選択と判断に確信を持てるよう、継続的に伴走します。</p>
       <div class="story-grid">
         <div class="story-item"><strong>人を活かす</strong><p>採用・幹部登用・共同経営——誰を選ぶかが、組織の未来を決めます。相性・特性・役割を読み解き、最善の選択を整理します。</p></div>
@@ -1561,7 +1564,7 @@ section[id], [id] { scroll-margin-top: 80px; }
         <div class="story-item"><strong>継続して支える</strong><p>事業の状況が変われば、<br>人も、タイミングも、判断すべきことも変わります。<br>現在地を継続的に確認しながら、重要な意思決定を支援します。</p></div>
       </div>
       <div class="message-box" style="background:rgba(255,255,255,0.06);border-color:var(--gold);">
-        <p style="color:#D9E5F3;font-weight:700;font-family:var(--serif);font-size:17px;margin-bottom:10px;">良い選択が、経営と人生を豊かにする</p>
+        <p style="color:#D9E5F3;font-weight:700;font-family:var(--serif);font-size:17px;margin-bottom:10px;">良い選択が、<br class="sp-only">経営と人生を豊かにする</p>
         <p style="color:#C9D7E7;">人・判断・時期を読み解き、より良い選択を支援することで、経営と人生の未来に貢献する——それが、鑑定秘書™のすべての出発点です。</p>
       </div>
     </div>
@@ -1570,7 +1573,7 @@ section[id], [id] { scroll-margin-top: 80px; }
   <section class="section">
     <div class="container">
       <span class="eyebrow">Cases</span>
-      <h2 class="section-title">こんな場面で使われています</h2>
+      <h2 class="section-title">こんな場面で<br class="sp-only">使われています</h2>
       <div class="case-grid">
         <div class="case-card">
           <div class="case-num">CASE 01</div><h3>FC展開を進めるべきか</h3>
@@ -1801,7 +1804,7 @@ section[id], [id] { scroll-margin-top: 80px; }
     <div class="container">
       <span class="eyebrow">Is This You?</span>
       <h2 class="section-title">このサービスを<br>受けてほしい方へ</h2>
-      <p class="section-lead">一つでも「これ、自分のことだ」と思ったら——</p>
+      <p class="section-lead">一つでも「これ、自分のことだ」と<span class="nobr">思ったら——</span></p>
       <div class="check-grid">
         <div class="impact-card">出店・採用・提携など、重要な判断を先延ばしにしている</div>
         <div class="impact-card">コンサルに相談した。論理的な答えは出た。それでも動けない</div>
@@ -1834,7 +1837,7 @@ section[id], [id] { scroll-margin-top: 80px; }
 
   <section id="cta" class="section dark final-cta">
     <div class="container">
-      <h2 class="cta-title">重要な判断の前に、<br>一度鑑定を受けてみてください</h2>
+      <h2 class="cta-title">重要な判断の前に、<br class="pc-only">一度<br class="sp-only">鑑定を受けてみてください</h2>
       <div class="plan-grid">
         <div class="plan-card">
           <p class="plan-catch">まずは、自分を知ることから</p>
